@@ -3,9 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2019 at 08:20 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.8
+
+-- Tempo de geração: 16-Nov-2019 às 15:17
+-- Versão do servidor: 10.4.6-MariaDB
+-- versão do PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -18,14 +19,14 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `cinderela`
+
+-- Banco de dados: `cinderela`
 --
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `produtos`
+
+-- Estrutura da tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -53,16 +54,16 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+--
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `produtos`
+-- Índices para tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
---
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
@@ -84,6 +85,12 @@ ALTER TABLE `produtos`
 --
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `produtos`
+--
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
