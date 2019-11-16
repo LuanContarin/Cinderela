@@ -15,7 +15,7 @@ if(isset($_POST['send'])){
             $senha = md5($senha);
             $sql = "INSERT INTO usuario(nome, senha, email) VALUES('$nome', '$senha', '$email')";
             mysqli_query($conexao, $sql);
-            header('Location: index.php');
+            header('Location: login.php');
         }
         else{
             echo "AS SENHAS NÃO BATEM";
