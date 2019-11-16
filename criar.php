@@ -32,8 +32,8 @@ if($_POST){
         $stmt = $con->prepare($query);
 
         //campo da imagem
-        $imagem=!empty($_FILES["imagem"]["nome"])
-            ? sha1_file($_FILES['imagem']['tmp_nome']) . "-" . basename($_FILES["imagem"]["nome"])
+        $imagem=!empty($_FILES["imagem"]["name"])
+            ? sha1_file($_FILES['imagem']['tmp_name']) . "-" . basename($_FILES["imagem"]["name"])
             : "";
         $imagem=htmlspecialchars(strip_tags($imagem));
  
@@ -65,7 +65,7 @@ if($_POST){
                     $file_upload_error_messages="";
             }
             //verificar imagem
-            $check = getimagesize($_FILES["imagem"]["tmp_nome"]);
+            $check = getimagesize($_FILES["imagem"]["tmp_name"]);
             if($check!==false){
 
             }else{
@@ -84,8 +84,8 @@ if($_POST){
             if (!is_dir($target_directory)){
                 mkdir($target_directory, 077, true);
             }
-            if (emptdy($file_upload_error_messages)){
-                if(move_upload_file($_FILES["imagem"]["tmp_nome"], $target_file)){
+            if (empty($file_upload_error_messages)){
+                if(move_upload_file($_FILES["imagem"]["tmp_name"], $target_file)){
 
                 }else{
                     echo "<div class='alert alert-danger'>";
@@ -93,6 +93,7 @@ if($_POST){
                         echo "<div> Faça um update para enviar a foto.</div>";
                     echo "</div>";
             }
+        }
             else{
                 echo "<div class='alert alert-danger'>";
                     echo "<div>{$file_upload_error_messages}</div>";
@@ -112,7 +113,7 @@ if($_POST){
 ?>
 
     <!-- HTML dos produtos -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method= "post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data" method= "post">
         <table class='table table-hover table-responsive table-bordered'>
         <tr>
             <td>Imagem</td>
