@@ -1,6 +1,22 @@
 <?php
 require "conexion.php";
 ?>
+<?php
+if(isset($_POST['send'])){
+    $nome = $_POST['nome'];
+    $senha = $_POST['senha'];
+    $email = $_POST['email'];
+    $confirma = $_POST['confirma'];
+    if ($senha == $confirma){
+        $senha = md5($senha);
+        $sql = "INSERT INTO usuario(nome, senha, email) VALUES('$nome', '$senha', '$email')";
+        mysqli_query($conexao, $sql);
+    }
+    else{
+        echo "Erro, aprende a digitar";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,7 +30,8 @@ require "conexion.php";
         <input type="text" name="nome" id="nome" placeholder="Nome">
         <input type="email" name="email" id="email" placeholder="Email">
         <input type="password" name="senha" id="senha" placeholder="Senha">
-        <input type="submit" value="Enviar">
+        <input type="password" name="confirma" placeholder="Confirmar senha">
+        <input type="submit" name="send" value="Enviar">
     </form>
 </body>
 </html>

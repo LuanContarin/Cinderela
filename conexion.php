@@ -1,3 +1,3 @@
 <?php
-mysqli_connect("localhost", "root", "", "cinderela");
+$conexao = mysqli_connect("localhost", "root", "", "cinderela");
 ?>
