@@ -31,6 +31,13 @@ if($_POST){
         // preparar para execução
         $stmt = $con->prepare($query);
 
+        //campo da imagem
+        $imagem=!empty($_FILES["imagem"]["nome"])
+            ? sha1_file($_FILES['imagem']['tmp_nome']) . "-" . basename($_FILES["imagem"]["nome"])
+            : "";
+        $imagem=htmlspecialchars(strip_tags($imagem));
+ 
+
         // variáveis
         $imagem=htmlspecialchars(strip_tags($_POST['imagem']));
         $nome=htmlspecialchars(strip_tags($_POST['nome']));
@@ -50,6 +57,48 @@ if($_POST){
         //Executar a query
         if($stmt ->execute()){
             echo "<div class='alert alert-success'>As informações foram salvas.</div>";
+            if($imagem) {
+                    $target_directory = "uploads/";
+                    $target_file = $target_directory . $imagem;
+                    $file_type = pathinfo($target_file, PATHINFO_EXTENSION);
+                    // erro
+                    $file_upload_error_messages="";
+            }
+            //verificar imagem
+            $check = getimagesize($_FILES["imagem"]["tmp_nome"]);
+            if($check!==false){
+
+            }else{
+                $file_upload_error_messages.="<div>Arquivo não compativel.</div>";
+            }
+            $allowed_file_types=array("jpg", "jpeg", "png", "gif");
+            if(!in_array($file_type, $allowed_file_types)){
+               $file_upload_error_messages.="<div>Apenas JPG, JPEG, PNG e GIF são aceitos. </div>"; 
+            }
+            if(file_exists($target_file)){
+                $file_upload_error_messages.="<div>Imagem já existente.</div>";
+            }
+            if($_FILES['imagem']['size'] > (1024000)){
+                $file_upload_error_messages.="<div>A imagem deve ter menos de 1MB.</div>";
+            }
+            if (!is_dir($target_directory)){
+                mkdir($target_directory, 077, true);
+            }
+            if (emptdy($file_upload_error_messages)){
+                if(move_upload_file($_FILES["imagem"]["tmp_nome"], $target_file)){
+
+                }else{
+                    echo "<div class='alert alert-danger'>";
+                        echo "<div> Não foi possível enviar a foto. </div>";
+                        echo "<div> Faça um update para enviar a foto.</div>";
+                    echo "</div>";
+            }
+            else{
+                echo "<div class='alert alert-danger'>";
+                    echo "<div>{$file_upload_error_messages}</div>";
+                    echo "<div>Faça update para enviar a foto.</div>";
+                echo "</div>";
+            }
         }else{
             echo "<div class='alert alert-danger'>Não foi possível salvar.</div>";
         }

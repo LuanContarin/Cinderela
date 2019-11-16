@@ -61,7 +61,10 @@ catch(PDOException $exception){
 <table class='table table-hover table-responsive table-bordered'>
     <tr>
         <td>Imagem</td>
-        <td><?php echo htmlspecialchars($imagem, ENT_QUOTES);  ?></td>
+        <td><?php echo htmlspecialchars($row['imagem'], ENT_QUOTES);  ?></td>
+        <td> 
+            <?php echo $imagem ? "<img src='uploads/{$imagem}' style='width:300px;' />" : "Sem imagem disponível."; ?>
+        </td>    
     </tr>
     <tr>
         <td>Nome</td>
