@@ -33,13 +33,11 @@ if($_POST){
 
         //campo da imagem
         $imagem=!empty($_FILES["imagem"]["name"])
-            ? sha1_file($_FILES['imagem']['tmp_name']) . "-" . basename($_FILES["imagem"]["name"])
+            ? basename($_FILES["imagem"]["name"])
             : "";
         $imagem=htmlspecialchars(strip_tags($imagem));
- 
-
         // variáveis
-        $imagem=htmlspecialchars(strip_tags($_POST['imagem']));
+
         $nome=htmlspecialchars(strip_tags($_POST['nome']));
         $descricao=htmlspecialchars(strip_tags($_POST['descricao']));
         $preco=htmlspecialchars(strip_tags($_POST['preco']));
@@ -85,14 +83,8 @@ if($_POST){
                 mkdir($target_directory, 077, true);
             }
             if (empty($file_upload_error_messages)){
-                if(move_upload_file($_FILES["imagem"]["tmp_name"], $target_file)){
-
-                }else{
-                    echo "<div class='alert alert-danger'>";
-                        echo "<div> Não foi possível enviar a foto. </div>";
-                        echo "<div> Faça um update para enviar a foto.</div>";
-                    echo "</div>";
-            }
+                move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file);
+                   
         }
             else{
                 echo "<div class='alert alert-danger'>";
@@ -113,7 +105,7 @@ if($_POST){
 ?>
 
     <!-- HTML dos produtos -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data" method= "post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data" method="POST">
         <table class='table table-hover table-responsive table-bordered'>
         <tr>
             <td>Imagem</td>
