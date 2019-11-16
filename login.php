@@ -16,7 +16,7 @@ if (isset($_POST['senha']))
     $resultado2 = mysqli_query($conexao, "SELECT * FROM `usuario` WHERE `email` = '$email' and senha = '$senha'");
     if(mysqli_num_rows($resultado2)==1){
         $line = mysqli_fetch_assoc($resultado2);
-        $_SESSION['id'] = $line['id'];
+        $_SESSION['email'] = $line['email'];
         
     header('Location: index.php');    
     }
@@ -31,10 +31,21 @@ if (isset($_POST['senha']))
 ?>
 <html>
 <body>
+    <?php
+    if(isset($_SESSION['email'])){
+        ?>
+    <a href="logout.php"><button>Logout</button></a>
+        <?php
+    }
+    else{
+?>
 <form method = "POST">
         <input type="email" name="email" id="email" placeholder="Email">
         <input type="password" name="senha" id="senha" placeholder="Senha">
         <input type="submit" name="send" value="Enviar">
         </form>
+<?php
+    }
+        ?>
 </body>
 </html>
