@@ -7,14 +7,21 @@ if(isset($_POST['send'])){
     $senha = $_POST['senha'];
     $email = $_POST['email'];
     $confirma = $_POST['confirma'];
-    if ($senha == $confirma){
-        $senha = md5($senha);
-        $sql = "INSERT INTO usuario(nome, senha, email) VALUES('$nome', '$senha', '$email')";
-        mysqli_query($conexao, $sql);
+    if(empty($nome) || empty($email) || empty($senha)){
+        echo "PREENCHA TODOS OS CAMPOS";
     }
     else{
-        echo "Erro, aprende a digitar";
+        if ($senha == $confirma){
+            $senha = md5($senha);
+            $sql = "INSERT INTO usuario(nome, senha, email) VALUES('$nome', '$senha', '$email')";
+            mysqli_query($conexao, $sql);
+            header('Location: login.php');
+        }
+        else{
+            echo "AS SENHAS NÃO BATEM";
+        }
     }
+    
 }
 ?>
 <!DOCTYPE html>
