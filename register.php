@@ -14,7 +14,8 @@ if(isset($_POST['send'])){
         if ($senha == $confirma){
             $senha = md5($senha);
             $sql = "INSERT INTO usuario(nome, senha, email) VALUES('$nome', '$senha', '$email')";
-            mysqli_query($conexao, $sql);
+            $stmt = $con->prepare($sql);
+            $stmt->execute();
             header('Location: login.php');
         }
         else{

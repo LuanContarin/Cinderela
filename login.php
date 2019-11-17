@@ -10,12 +10,14 @@ if (isset($_POST['senha']))
     if(empty($email) || empty($senha)){
         echo "Preencha todos os Campos";
     }
-    $resultado = mysqli_query($conexao, "SELECT * FROM `usuario` WHERE `email` = '$email'");
-    if(mysqli_num_rows($resultado)>0){
+    $stmt = $con->prepare("SELECT * FROM `usuario` WHERE `email` = '$email'");
+    if($stmt->execute()){
+        if($stmt->rowCount() > 0){
     $senha = md5($senha);
-    $resultado2 = mysqli_query($conexao, "SELECT * FROM `usuario` WHERE `email` = '$email' and senha = '$senha'");
-    if(mysqli_num_rows($resultado2)==1){
-        $line = mysqli_fetch_assoc($resultado2);
+    $resultado2 = $con->prepare("SELECT * FROM `usuario` WHERE `email` = '$email' and senha = '$senha'");
+    if($resultado2->execute()){
+        if($resultado2->rowCount() == 1)
+        $line = $resultado2->fetch(PDO::FETCH_ASSOC);
         $_SESSION['email'] = $line['email'];
         
     header('Location: index.php');    
@@ -27,6 +29,7 @@ if (isset($_POST['senha']))
     else{
         echo "Não existe conta com esse respectivo email registrada em nosso sistema";
     }
+}
 }
 ?>
 <html>
@@ -47,5 +50,3 @@ if (isset($_POST['senha']))
 <?php
     }
         ?>
-</body>
-</html>
