@@ -74,7 +74,10 @@ $num = $stmt->rowCount();
  
 // link para criação
 echo "<a href='criar.php' class='btn btn-primary m-b-1em'>Adicionar Produto</a>";
- 
+
+//logout 
+echo "<a href='logout.php' class='btn btn-primary m-b-1em'>Sair</a>"; 
+
 // checar numero a ser encontrado
 if($num>0){
  echo "<table class='table table-hover table-responsive table-bordered'>";//começo da tabela
@@ -154,7 +157,7 @@ else{
 <?php
 }
 else{
-    require "header.php";
+ 
     require "footer.php";
 }
 ?>
