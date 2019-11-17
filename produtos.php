@@ -135,11 +135,12 @@ $total_rows = $row['total_rows'];
 $page_url="produtos.php?";
 include_once "paginacao.php";
 }
- 
+
 // se não encontrar
 else{
     echo "<div class='alert alert-danger'>Nenhum produto encontrado.</div>";
 }
+echo "<a href='carrinho.php' class='btn btn-primary'>Comprar</a>"
 ?>
         
     </div>
@@ -157,7 +158,8 @@ else{
 <?php
 }
 else{
- 
+
     require "footer.php";
+
 }
 ?>
