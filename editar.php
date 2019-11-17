@@ -39,6 +39,13 @@ try {
      
     // variáveis para preencher
     $imagem = $row['imagem'];
+    
+    if(isset($_FILES['imagem']['name'])){
+        $imagem=!empty($_FILES["imagem"]["name"])
+        ? basename($_FILES["imagem"]["name"])
+        : "";
+    $imagem=htmlspecialchars(strip_tags($imagem));
+    }
     $nome = $row['nome'];
     $descricao = $row['descricao'];
     $preco = $row['preco'];
@@ -68,7 +75,6 @@ if($_POST){
         $stmt = $con->prepare($query);
  
         // variáveis
-        $imagem=htmlspecialchars(strip_tags($_POST['imagem']));
         $nome=htmlspecialchars(strip_tags($_POST['nome']));
         $descricao=htmlspecialchars(strip_tags($_POST['descricao']));
         $preco=htmlspecialchars(strip_tags($_POST['preco']));
@@ -86,10 +92,49 @@ if($_POST){
          
         // Exec query
         if($stmt->execute()){
-            echo "<div class='alert alert-success'>As informações foram alteradas.</div>";
-        }else{
-            echo "<div class='alert alert-danger'>Não foi possível salvar. Por favor tente novamente.</div>";
+            echo "<div class='alert alert-success'>As informações foram salvas.</div>";
+            if($imagem) {
+                    $target_directory = "uploads/";
+                    $target_file = $target_directory . $imagem;
+                    $file_type = pathinfo($target_file, PATHINFO_EXTENSION);
+                    // erro
+                    $file_upload_error_messages="";
+            }
+            //verificar imagem
+            try {
+                getimagesize($_FILES['imagem']['tmp_name']);
+            } catch (\Throwable $th) {
+                $file_upload_error_messages = "<div>Arquivo indefinido</div>";
+            }
+            if(empty(getimagesize($_FILES["imagem"]["tmp_name"]))){
+            }
+            $allowed_file_types=array("jpg", "jpeg", "png", "gif");
+            if(!in_array($file_type, $allowed_file_types)){
+               $file_upload_error_messages.="<div>Apenas JPG, JPEG, PNG e GIF são aceitos. </div>"; 
+            }
+            if(file_exists($target_file)){
+                $file_upload_error_messages.="<div>Imagem já existente.</div>";
+            }
+            if($_FILES['imagem']['size'] > (1024000)){
+                $file_upload_error_messages.="<div>A imagem deve ter menos de 1MB.</div>";
+            }
+            if (!is_dir($target_directory)){
+                mkdir($target_directory, 077, true);
+            }
+            if (empty($file_upload_error_messages)){
+                move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file);
+                   
         }
+            else{
+                echo "<div class='alert alert-danger'>";
+                    echo "<div>{$file_upload_error_messages}</div>";
+                    echo "<div>Faça update para enviar a foto.</div>";
+                echo "</div>";
+            }
+        }else{
+            echo "<div class='alert alert-danger'>Não foi possível salvar.</div>";
+        }
+            
          
     }
      
@@ -101,7 +146,7 @@ if($_POST){
 ?>
 
     <!-- HTML editar -->
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?id={$id}");?>" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?id={$id}");?>" enctype="multipart/form-data" method="POST">
     <table class='table table-hover table-responsive table-bordered'>
         <tr>
             <td>Imagem</td>
