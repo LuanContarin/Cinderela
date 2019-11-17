@@ -1,3 +1,7 @@
+<?php
+session_start();
+if($_SESSION['email'] == 'admin@admin'){
+    ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -147,3 +151,10 @@ else{
  
 </body>
 </html>
+<?php
+}
+else{
+    require "header.php";
+    require "footer.php";
+}
+?>

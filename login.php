@@ -20,7 +20,7 @@ if (isset($_POST['senha']))
         $line = $resultado2->fetch(PDO::FETCH_ASSOC);
         $_SESSION['email'] = $line['email'];
         
-    header('Location: index.php');    
+    header('Location: produtos.php');    
     }
     else{
         echo "Senha não correspondente ao respectivo usuário";
