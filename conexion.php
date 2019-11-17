@@ -1,3 +1,4 @@
+
 <?php
 // Usado para conectar ao banco de dados
 $host = "localhost";
