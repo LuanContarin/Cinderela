@@ -74,10 +74,7 @@ $num = $stmt->rowCount();
  
 // link para criação
 echo "<a href='criar.php' class='btn btn-primary m-b-1em'>Adicionar Produto</a>";
-
-//logout 
-echo "<a href='logout.php' class='btn btn-primary m-b-1em'>Sair</a>"; 
-
+ 
 // checar numero a ser encontrado
 if($num>0){
  echo "<table class='table table-hover table-responsive table-bordered'>";//começo da tabela
@@ -135,12 +132,11 @@ $total_rows = $row['total_rows'];
 $page_url="produtos.php?";
 include_once "paginacao.php";
 }
-
+ 
 // se não encontrar
 else{
     echo "<div class='alert alert-danger'>Nenhum produto encontrado.</div>";
 }
-echo "<a href='carrinho.php' class='btn btn-primary'>Comprar</a>"
 ?>
         
     </div>
@@ -157,9 +153,10 @@ echo "<a href='carrinho.php' class='btn btn-primary'>Comprar</a>"
 </html>
 <?php
 }
+elseif(isset($_SESSION['email'])){
+    header('location:home.php');
+}
 else{
-
-    require "footer.php";
-
+    echo "400 nao autorizado";
 }
 ?>

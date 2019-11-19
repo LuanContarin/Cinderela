@@ -18,6 +18,7 @@ if (isset($_POST['senha']))
     if($resultado2->execute()){
         if($resultado2->rowCount() == 1)
         $line = $resultado2->fetch(PDO::FETCH_ASSOC);
+        session_start();
         $_SESSION['email'] = $line['email'];
         
     header('Location: produtos.php');    
