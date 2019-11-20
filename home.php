@@ -51,6 +51,7 @@ $sql = "SELECT * FROM produtos ORDER BY id asc"
             <input type="number" name="quantidade" >
             <br>
             <input type="submit" name="compra" value="Comprar">
+            <input type="submit" name="excluir" value="Excluir">
             <br>
             <br>
             <br>
