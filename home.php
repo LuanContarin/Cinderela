@@ -63,7 +63,9 @@ $sql = "SELECT * FROM produtos ORDER BY id asc"
         }
     }
 }
+
 GeraColunas(2, $sql, $con);
         ?>
+        <a href="carrinho.php?carrinho=Carrinho"><button type="button" name="carrinho" >Carrinho</button></a>
         </body>
 </html>

@@ -17,13 +17,18 @@ if(isset($_POST['cancelar'])){
     header('Location: home.php');
 }
 if(isset($_POST['excluir'])){
-    foreach($_SESSION['cart'] as $value){
+    foreach($_SESSION['cart'] as $key=> $value){
     if(in_array($_GET['id'], $value)){
-        unset($value);
+        print_r($value);
     }
     }
 }
-print_r($_SESSION['cart']);
+if(isset($_GET['carrinho'])){
+    while(list(, $val) = each($_SESSION['cart'])){
+        echo $val;
+    }
+}
+// print_r($_SESSION['cart']);
 ?>
 <a href="home.php"><button>Voltar</button></a>
 <form method="post">
