@@ -9,6 +9,9 @@ require "conexion.php";
 </head>
 
 <body>
+    <form method="post">
+      <input type="search" name="pesquisa" id="">
+    </form>
 <?php 
     $query = "SELECT * FROM produtos";
     $stmt = $con->prepare($query);
@@ -16,10 +19,17 @@ require "conexion.php";
 ?>
  
 <?php
-$sql = "SELECT * FROM produtos ORDER BY id"
+
+if(isset($_POST['pesquisa'])){
+  $pesquisa = $_POST['pesquisa'];
+  $sql = "SELECT * FROM produtos WHERE nome like '%$pesquisa%' ORDER BY id";
+}else{
+  $sql = "SELECT * FROM produtos ORDER BY id";
+}
 ?>
 </td>
 </tr>
+
 <?php
     function GeraColunas($pNumColunas, $pQuery, $con) {
         $resultado =$con->prepare($pQuery);
@@ -45,7 +55,7 @@ $sql = "SELECT * FROM produtos ORDER BY id"
           <form action="carrinho.php?id=<?php echo $cod;?>" method="post">
             <br>
             <legend name="nome"><?php echo $nome; ?></legend>
-            <img src="uploads/<?php echo $img; ?>" >
+            <img src="uploads/<?php echo $img; ?>" width = 200px height = 100px>
             <legend name='preco'><?php echo $preco; ?></legend>
             <input type="number" name="quantidade" >
             <br>
@@ -62,6 +72,8 @@ $sql = "SELECT * FROM produtos ORDER BY id"
 
 GeraColunas(2, $sql, $con);
         ?>
+        <br>
+        <br>
         <a href="carrinho.php"><button type="button" name="carrinho" >Carrinho</button></a>
         </body>
 </html>

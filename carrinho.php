@@ -44,7 +44,7 @@ if(isset($_POST['excluir'])){
         $carrinho->execute();
         $row = $carrinho->fetch(PDO::FETCH_ASSOC);
         ?>
-        <img src="uploads/<?php echo $row['imagem']; ?>">
+        <img src="uploads/<?php echo $row['imagem']; ?>" width = 200px height = 100px>
         <p><?php echo $row['nome'];?></p>
         <p>R$ <?php echo $val['quantidade'] * $row['preco'];?></p>
         <?php
@@ -52,8 +52,7 @@ if(isset($_POST['excluir'])){
     // if(isset($_POST['card'])){
     //     $opcao=$_POST['cartao'];
     //     $parcela = $_POST['parcela'];
-        // 
-    // }
+    //}
 
 if(isset($_POST['finalizar'])){
     $parcela = $_POST['parcela'];
