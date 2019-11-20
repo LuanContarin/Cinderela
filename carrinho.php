@@ -23,12 +23,33 @@ if(isset($_POST['excluir'])){
     }
     }
 }
-if(isset($_GET['carrinho'])){
     while(list(, $val) = each($_SESSION['cart'])){
-        echo $val;
+        $id=$val['id'];
+        // echo $id;
+        // echo "SELECT * FROM produtos WHERE id=$id";
+        $carrinho = $con->prepare("SELECT * FROM produtos WHERE id='$id'");
+        $carrinho->execute();
+        $row = $carrinho->fetch(PDO::FETCH_ASSOC);
+        ?>
+        <img src="uploads/<?php echo $row['imagem']; ?>">
+        <p><?php echo $row['nome'];?></p>
+        <p>R$ <?php echo $val['quantidade'] * $row['preco'];?></p>
+        <?php
     }
-}
-// print_r($_SESSION['cart']);
+
+if(isset($_POST['finalizar'])){
+    $s = 0;
+    for($i = 0; $i < sizeof($_SESSION['cart']); $i++){
+        $id = $_SESSION['cart'][$i]['id'];
+        $quantidade = $_SESSION['cart'][$i]['quantidade'];
+        $finalizar = $con->prepare("SELECT * FROM produtos WHERE id='$id'");
+        $finalizar->execute();
+        $row = $finalizar->fetch(PDO::FETCH_ASSOC);
+        $s += $row['preco'] * $quantidade;
+    }
+    echo $s;
+        // $finalizar = $con->prepare("SELECT * FROM produtos WHERE id")
+    }
 ?>
 <a href="home.php"><button>Voltar</button></a>
 <form method="post">
