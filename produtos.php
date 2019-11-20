@@ -148,10 +148,11 @@ else{
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
  
 <!-- confirm delete record will be here -->
- 
+ <a href="logout.php"><button>Logout</button></a>
 </body>
 </html>
 <?php
+
 }
 elseif(isset($_SESSION['email'])){
     header('location:home.php');

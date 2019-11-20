@@ -75,5 +75,9 @@ GeraColunas(2, $sql, $con);
         <br>
         <br>
         <a href="carrinho.php"><button type="button" name="carrinho" >Carrinho</button></a>
+        <br>
+        <br>
+        <br>
+        <a href="logout.php"><button>Logout</button></a>
         </body>
 </html>
