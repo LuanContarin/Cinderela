@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2019 at 08:20 PM
+-- Generation Time: Nov 21, 2019 at 10:22 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -52,19 +52,6 @@ CREATE TABLE `usuario` (
   `senha` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `pedidos`
---
-
-CREATE TABLE `pedidos` (
-  `idPed` int(11) NOT NULL,
-  `idProd` int NOT NULL,
-  `Qntde` int NOT NULL,
-  `Preco` double NOT NULL,
-  `Total` double DEFAULT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Indexes for dumped tables
 --
@@ -83,12 +70,6 @@ ALTER TABLE `usuario`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `pedidos`
---
-  ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`idPed`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -104,11 +85,6 @@ ALTER TABLE `produtos`
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
---
--- AUTO_INCREMENT for table `pedidos`
---
-ALTER TABLE `pedidos`
-  MODIFY `idPed` int(11) NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
