@@ -35,19 +35,25 @@ if (isset($_POST['senha']))
 ?>
 <html>
 <body>
-    <?php
-    if(isset($_SESSION['email'])){
-        ?>
-    <a href="logout.php"><button>Logout</button></a>
-        <?php
-    }
-    else{
-?>
-<form method = "POST">
-        <input type="email" name="email" id="email" placeholder="Email">
-        <input type="password" name="senha" id="senha" placeholder="Senha">
-        <input type="submit" name="send" value="Enviar">
-        </form>
 <?php
-    }
-        ?>
+if (isset($_SESSION['email'])) {
+  ?>
+    <a href="logout.php"><button>Logout</button></a>
+  <?php
+} else {
+  ?>
+    <div class="form-wrapper" style="margin-top: 14px">
+      <div class="form card">
+        <div class="tac">
+          <h3 class="title">Fazer login</h3>
+        </div>
+        <form method = "POST">
+          <input class="inp" type="email" name="email" id="email" placeholder="Email">
+          <input class="inp" type="password" name="senha" id="senha" placeholder="Senha">
+          <input class="btn" type="submit" name="send" value="Enviar">
+        </form>
+      </div>
+    </div>
+  <?php
+}
+  ?>

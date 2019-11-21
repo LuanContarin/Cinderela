@@ -34,12 +34,19 @@ if(isset($_POST['send'])){
     <title>Registrar</title>
 </head>
 <body>
-    <form method="post">
-        <input type="text" name="nome" id="nome" placeholder="Nome">
-        <input type="email" name="email" id="email" placeholder="Email">
-        <input type="password" name="senha" id="senha" placeholder="Senha">
-        <input type="password" name="confirma" placeholder="Confirmar senha">
-        <input type="submit" name="send" value="Enviar">
-    </form>
+  <div class="form-wrapper" style="margin-top: 14px">
+    <div class="form card">
+      <div class="tac">
+        <h3 class="title">Criar conta</h3>
+      </div>
+      <form method="post">
+        <input class="inp" type="text" name="nome" id="nome" placeholder="Nome">
+        <input class="inp" type="email" name="email" id="email" placeholder="Email">
+        <input class="inp" type="password" name="senha" id="senha" placeholder="Senha">
+        <input class="inp" type="password" name="confirma" placeholder="Confirmar senha">
+        <input class="btn" type="submit" name="send" value="Enviar">
+      </form>
+    </div>
+  </div>
 </body>
 </html>
