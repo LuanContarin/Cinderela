@@ -1,4 +1,9 @@
 
+@font-face {
+  font-family: "Work Sans";
+  src: url("./WorkSans-Regular.otf");
+}
+
 :root {
   --back-color: #f7f7f7;
   --primary: #ef84f1;
@@ -7,6 +12,10 @@
 body {
   margin: 0;
   background-color: var(--back-color);
+}
+
+body, textarea, button, input {
+  font-family: "Work Sans";
 }
 
 .inp {
