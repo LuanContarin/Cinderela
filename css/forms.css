@@ -7,6 +7,8 @@
 :root {
   --back-color: #f7f7f7;
   --primary: #ef84f1;
+  --red: #dc4141;
+  --blue: #5b7ae1;
 }
 
 body {
@@ -55,6 +57,15 @@ body, textarea, button, input {
   transition-duration: .15s;
 }
 
+.link {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
 .btn:hover {
   color: white;
   background-color: var(--primary);
@@ -63,9 +74,16 @@ body, textarea, button, input {
 .form-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .form {
+  transform: translateY(-100px);
   flex-basis: 500px;
   margin: 0 12px;
 }
+
+.error {
+  color: var(--red);
+} 

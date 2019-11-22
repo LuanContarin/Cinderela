@@ -1,9 +1,9 @@
 <?php
-require_once "header.php";
+require "header.php";
 if(!isset($_SESSION['email'])){
-    require "register.php";
+    require "login.php";
 }
 ?>
 <?php
-require_once "footer.php";
+require "footer.php";
 ?>

@@ -8,6 +8,5 @@
 </head>
 <body>
 <?php
-session_start();
-require_once "login.php";
+  session_start();
 ?>

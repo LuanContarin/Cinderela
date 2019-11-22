@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Cinderela - Adicionar produtos</title>
-      
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />         
 </head>
 
 <body>
