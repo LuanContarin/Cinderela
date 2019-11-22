@@ -1,25 +1,6 @@
 <?php
-session_start();
-if($_SESSION['email'] == 'admin@admin'){
-    ?>
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Cinderela - Produtos</title>
-     
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-         
-    <!-- custom css -->
-    <style>
-    .m-r-1em{ margin-right:1em; }
-    .m-b-1em{ margin-bottom:1em; }
-    .m-l-1em{ margin-left:1em; }
-    .mt0{ margin-top:0; }
-    </style>
-</head>
-
-<body>
+require 'header.php'
+?>
  
     <!-- container -->
     <div class="container">

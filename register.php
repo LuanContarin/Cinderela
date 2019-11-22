@@ -16,8 +16,6 @@ if(isset($_POST['send'])){
       $msg = 'Preencha todos os campos';
       $hasError = true;
     } else {
-      echo $senha;
-      echo $confirma;
         if ($senha == $confirma){
             $senha = md5($senha);
             $sql = "INSERT INTO usuario(nome, senha, email) VALUES('$nome', '$senha', '$email')";
@@ -43,7 +41,7 @@ if(isset($_POST['send'])){
 </head>
 <body>
   <div class="form-wrapper" style="margin-top: 14px">
-    <div class="form card">
+    <div class="form card shadow">
       <div class="tac">
         <h3 class="title">Criar conta</h3>
       </div>

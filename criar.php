@@ -1,10 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Cinderela - Adicionar produtos</title>
-</head>
-
-<body>
+<?php
+require 'header.php'
+?>
   
     <!-- container -->
     <div class="container">
@@ -138,12 +134,6 @@ if($_POST){
     </table>
 </form>
 
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-   
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+<?php
+require 'footer.php'
+?>

@@ -1,29 +1,23 @@
 <?php
+require 'header.php'
 require "conexion.php";
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title> Carrinho de Compras </title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-</head>
 
-<body>
-    <form method="post">
-      <input type="search" name="pesquisa" id="">
-    </form>
+  <form method="post">
+    <input type="search" name="pesquisa" id="">
+  </form>
 <?php 
-    $query = "SELECT * FROM produtos";
-    $stmt = $con->prepare($query);
-    $stmt->execute();       
+  $query = "SELECT * FROM produtos";
+  $stmt = $con->prepare($query);
+  $stmt->execute();
 ?>
  
 <?php
 
-if(isset($_POST['pesquisa'])){
+if (isset($_POST['pesquisa'])) {
   $pesquisa = $_POST['pesquisa'];
   $sql = "SELECT * FROM produtos WHERE nome like '%$pesquisa%' ORDER BY id";
-}else{
+} else {
   $sql = "SELECT * FROM produtos ORDER BY id";
 }
 ?>

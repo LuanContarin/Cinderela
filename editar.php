@@ -1,13 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Cinderela - Editar</title>
-     
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />        
-</head>
-
-<body>
+<?php
+require 'header.php'
+?>
  
     <!-- container -->
     <div class="container">
