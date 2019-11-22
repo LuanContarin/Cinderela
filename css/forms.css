@@ -12,12 +12,13 @@
   --txt: #707070;
 }
 
-body {
+body,
+html {
+  height: 100%;
   margin: 0;
-  background-color: var(--back-color);
 }
 
-body, textarea, button, input {
+textarea, button, input, body {
   font-family: "Work Sans";
   color: var(--txt);
 }
@@ -28,6 +29,7 @@ body, textarea, button, input {
   padding: 8px;
   width: 100%;
   margin-top: 8px;
+  box-sizing: border-box;
   font-size: 1em;
   background-color: var(--back-color);
 }
@@ -88,7 +90,6 @@ body, textarea, button, input {
 .form {
   transform: translateY(-50px);
   flex-basis: 500px;
-  margin: 0 12px;
 }
 
 .error {

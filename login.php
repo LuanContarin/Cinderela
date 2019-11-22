@@ -4,46 +4,45 @@ Senha -> usar name="senha" -->
 <?php 
 require "header.php";
 require "conexion.php";
-if (isset($_POST['senha']))
-{
-    $email = addslashes($_POST['email']);
-    $senha = addslashes($_POST['senha']);
-    global $hasError, $msg;
-    $hasError = false;
-    $msg = '';
-    if (empty($email) || empty($senha)) {
-        $msg = 'Preencha todos os campos.';
-        $hasError = true;
-    } else {
-      $stmt = $con->prepare("SELECT * FROM `usuario` WHERE `email` = '$email'");
-      if ($stmt->execute()) {
 
-        if ($stmt->rowCount() > 0) {
-          $senha = md5($senha);
-          $resultado2 = $con->prepare("SELECT * FROM `usuario` WHERE `email` = '$email' and senha = '$senha'");
-  
-          if ($resultado2->execute()) {
-            if($resultado2->rowCount() == 1)
-              $line = $resultado2->fetch(PDO::FETCH_ASSOC);
-            session_start();
-            $_SESSION['email'] = $line['email'];
-            
-            header('Location: produtos.php');
-          } else {
-            $msg = "Senha não correspondente ao respectivo usuário.";
-            $hasError = true;
-          }
+if (isset($_POST['senha'])) {
+  $email = addslashes($_POST['email']);
+  $senha = addslashes($_POST['senha']);
+  global $hasError, $msg;
+  $hasError = false;
+  $msg = '';
+  if (empty($email) || empty($senha)) {
+      $msg = 'Preencha todos os campos.';
+      $hasError = true;
+  } else {
+    $stmt = $con->prepare("SELECT * FROM `usuario` WHERE `email` = '$email'");
+    if ($stmt->execute()) {
+
+      if ($stmt->rowCount() > 0) {
+        $senha = md5($senha);
+        $resultado2 = $con->prepare("SELECT * FROM `usuario` WHERE `email` = '$email' and senha = '$senha'");
+
+        if ($resultado2->execute()) {
+          if($resultado2->rowCount() == 1)
+            $line = $resultado2->fetch(PDO::FETCH_ASSOC);
+          $_SESSION['email'] = $line['email'];
+          
+          header('Location: produtos.php');
         } else {
-          $msg = "Não existe conta com esse respectivo email registrada em nosso sistema.";
+          $msg = "Senha não correspondente ao respectivo usuário.";
           $hasError = true;
         }
       } else {
-        print_r($stmt->errorInfo());
+        $msg = "Não existe conta com esse respectivo email registrada em nosso sistema.";
+        $hasError = true;
       }
-  }
+    } else {
+      print_r($stmt->errorInfo());
+    }
+}
 }
 ?>
-<div class="form-wrapper" style="margin-top: 14px">
+<div class="form-wrapper">
   <div class="form card shadow">
     <div class="tac">
       <h3 class="title">Fazer login</h3>
@@ -62,6 +61,7 @@ if (isset($_POST['senha']))
     </div>
   </div>
 </div>
+
 <?php
-require 'footer.php'
+require 'footer.php';
 ?>

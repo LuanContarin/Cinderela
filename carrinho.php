@@ -1,6 +1,9 @@
 <?php
-session_start();
-require "conexion.php";
+require 'header.php';
+require 'conexion.php';
+?>
+
+<?php
 if(isset($_POST['compra'])){
     $c = 0;
     $cod=$_GET['id'];
@@ -101,3 +104,7 @@ if(isset($_POST['finalizar'])){
 <form method="post">
 <input type="submit" value="Cancelar carrinho" name="cancelar">
 </form>
+
+<?php
+require 'footer.php';
+?>
