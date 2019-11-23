@@ -1,0 +1,32 @@
+
+.navbar-wrapper {
+  height: 100px;
+  align-items: center;
+  display: flex;
+  background-color: white;
+  border-bottom: 1px solid rgb(200,200,200);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 72px;
+  flex-basis: 100%;
+}
+
+.nav-link {
+  color: var(--text);
+  text-decoration: none;
+  transform: scale(1,1);
+  font-size: 1.2em;
+  transition-duration: .2s;
+  margin-left: 16px;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.nav-link:active {
+  transform: scale(.9,.9);
+}

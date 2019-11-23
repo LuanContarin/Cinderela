@@ -1,38 +1,19 @@
 <?php
-session_start();
-if($_SESSION['email'] == 'admin@admin'){
-    ?>
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Cinderela - Produtos</title>
-     
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-         
-    <!-- custom css -->
-    <style>
-    .m-r-1em{ margin-right:1em; }
-    .m-b-1em{ margin-bottom:1em; }
-    .m-l-1em{ margin-left:1em; }
-    .mt0{ margin-top:0; }
-    </style>
-</head>
+require 'header.php';
+include 'conexion.php';
 
-<body>
+if (isset($_SESSION['email'])){
+  if($_SESSION['email'] === 'admin@admin'){
+?>
+
  
-    <!-- container -->
-    <div class="container">
-  
-        <div class="page-header">
-            <h1>Cinderela - Produtos</h1>
-        </div>
-
-     <!-- PHP visualização -->
-
+<div class="tac" style="margin: 100px;font-size: 2em;">
+  <h1>Admin - Produtos</h1>
+</div>
+<div class="table-wrapper-wrapper">
+  <div class="table-wrapper">
 <?php
 // conexão
-include 'conexion.php';
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
  
 $records_per_page = 5;
@@ -73,91 +54,80 @@ $stmt->execute();
 $num = $stmt->rowCount();
  
 // link para criação
-echo "<a href='criar.php' class='btn btn-primary m-b-1em'>Adicionar Produto</a>";
- 
-// checar numero a ser encontrado
-if($num>0){
- echo "<table class='table table-hover table-responsive table-bordered'>";//começo da tabela
- 
-    //cabeçalho
-    echo "<tr>";
-        echo "<th>ID</th>";
-        echo "<th>Imagem</th>";
-        echo "<th>Nome</th>";
-        echo "<th>Descrição</th>";
-        echo "<th>Preço</th>";
-        echo "<th>Desconto</th>";
-        echo "<th>Quantidade</th>";
-        echo "<th>Modificado</th>";
-        echo "<th>Ação</th>";
-    echo "</tr>";
-     
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+?>
 
+
+<div class="admin-btn-wrapper">
+  <a href='criar.php' class='admin-btn' >Adicionar Produto</a>
+</div>
+
+<?php
+
+// checar numero a ser encontrado
+if ($num>0) {
+ echo "<table class='table'>";
+  echo "<tr>";
+    echo "<th>ID</th>";
+    echo "<th>Imagem</th>";
+    echo "<th>Nome</th>";
+    echo "<th>Descrição</th>";
+    echo "<th>Preço</th>";
+    echo "<th>Desconto</th>";
+    echo "<th>Quantidade</th>";
+    echo "<th>Modificado</th>";
+    echo "<th>Ação</th>";
+  echo "</tr>";
+     
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     extract($row);
 
     echo "<tr>";
-        echo "<td>{$id}</td>";
-        echo "<td>{$imagem}</td>";
-        echo "<td>{$nome}</td>";
-        echo "<td>{$descricao}</td>";
-        echo "<td>R$ {$preco}</td>";
-        echo "<td>{$desconto}%</td>";
-        echo "<td>{$quantidade}</td>";
-        echo "<td>{$modificado}</td>";
-        echo "<td>";
-            // botão visualizar
-            echo "<a href='visualizar.php?id={$id}' class='btn btn-info m-r-1em'>Visualizar</a>";
-             
-            // botão editar
-            echo "<a href='editar.php?id={$id}' class='btn btn-primary m-r-1em'>Editar</a>";
- 
-            // botão excluir
-            echo "<a href='#' onclick='delete_user({$id});'  class='btn btn-danger'>Excluir</a>";
-        echo "</td>";
+      echo "<td>{$id}</td>";
+      echo "<td>{$imagem}</td>";
+      echo "<td>{$nome}</td>";
+      echo "<td>{$descricao}</td>";
+      echo "<td>R$ {$preco}</td>";
+      echo "<td>{$desconto}%</td>";
+      echo "<td>{$quantidade}</td>";
+      echo "<td>{$modificado}</td>";
+      echo "<td>";
+        echo "<a class='admin-btn' href='visualizar.php?id={$id}'>Visualizar</a>";
+        echo "<a class='admin-btn' href='editar.php?id={$id}'>Editar</a>";
+        echo "<a class='admin-btn' href='#' onclick='delete_user({$id});' >Excluir</a>";
+      echo "</td>";
     echo "</tr>";
-}
+  }
  
-// fim da tabela
-echo "</table>";
+  echo "</table>";
 
-$query = "SELECT COUNT(*) as total_rows FROM produtos";
-$stmt = $con->prepare($query);
+  $query = "SELECT COUNT(*) as total_rows FROM produtos";
+  $stmt = $con->prepare($query);
 
-$stmt->execute();
+  $stmt->execute();
 
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-$total_rows = $row['total_rows'];
+  $row = $stmt->fetch(PDO::FETCH_ASSOC);
+  $total_rows = $row['total_rows'];
 
-$page_url="produtos.php?";
-include_once "paginacao.php";
-}
- 
-// se não encontrar
-else{
-    echo "<div class='alert alert-danger'>Nenhum produto encontrado.</div>";
+  $page_url="produtos.php?";
+  include_once "paginacao.php";
+} else {
+  echo "<div class='alert alert-danger'>Nenhum produto encontrado.</div>";
 }
 ?>
         
-    </div>
-     
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-   
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
- 
-<!-- confirm delete record will be here -->
- <a href="logout.php"><button>Logout</button></a>
-</body>
-</html>
+</div>
+</div>
+</div>
 <?php
 
+} else {
+  header('location:home.php');
 }
-elseif(isset($_SESSION['email'])){
-    header('location:home.php');
 }
-else{
-    echo "400 nao autorizado";
+else {
+  header("Location: login.php");
 }
+?>
+<?php
+require 'footer.php';
 ?>

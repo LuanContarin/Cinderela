@@ -1,0 +1,96 @@
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("./WorkSans-Regular.otf");
+}
+
+:root {
+  --back-color: #f7f7f7;
+  --primary: #ef84f1;
+  --red: #dc4141;
+  --blue: #5b7ae1;
+  --txt: #707070;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+textarea, button, input, body {
+  font-family: "Work Sans";
+  color: var(--txt);
+}
+
+.inp {
+  border-radius: 6px;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  margin-top: 8px;
+  box-sizing: border-box;
+  font-size: 1em;
+  border: 1px solid rgb(200,200,200);
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.title {
+  margin: 6px 0;
+  font-size: 1.4em;
+}
+
+.tac {
+  text-align: center;
+}
+
+.btn {
+  border: 1px solid rgb(200,200,200);
+  padding: 11px;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 8px;
+  font-size: 1em;
+  transition-duration: .15s;
+}
+
+.link {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.btn:hover {
+  color: white;
+  border: none;
+  background-color: var(--primary);
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form {
+  border-radius: 10px;
+  border: 1px solid rgb(200,200,200);
+  padding: 24px;
+  transform: translateY(-50px);
+  flex-basis: 500px;
+}
+
+.error {
+  color: var(--red);
+} 

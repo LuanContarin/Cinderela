@@ -1,0 +1,45 @@
+
+.table-wrapper-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.table-wrapper {
+  flex-basis: 1300px;
+  margin-bottom: 300px;
+}
+
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  word-break: break-all;
+}
+
+.admin-btn-wrapper {
+  margin: 16px 0;
+  width: 200px;
+}
+
+th, td {
+  padding: 15px;
+}
+
+.admin-btn {
+  text-decoration: none;
+  color: var(--txt);
+  padding: 8px;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid rgb(200,200,200);
+  transition-duration: .15s;
+}
+
+.admin-btn:hover {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+}
