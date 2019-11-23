@@ -2,8 +2,7 @@
 .carrinho-form-wrapper {
   display: flex;
   justify-content: center;
-  margin: 180px 0;
-  margin-top: -200px;
+  margin: 10px 0;
 }
 
 .carrinho-form {
@@ -17,6 +16,16 @@
 .wrapper-box-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.success-payment-wrapper {
+  transform: translateY(-150px);
+  display: flex;
+  justify-content: center;
+}
+
+.success-payment {
+  flex-basis: 400px;
 }
 
 .wrapper-box {

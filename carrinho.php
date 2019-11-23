@@ -117,14 +117,21 @@ if(isset($_POST['finalizar'])){
     // $header = "Mime Version: 1.0\n". "Content-type: text/html; charset=utf-8\n". "From: vini.bispo015@gmail.com";
     // echo $_SESSION['email'];
     // echo $header;
-    echo "Parabéns ".$_SESSION['email']."\nVocê finalizou sua compra em {$parcela} parcelas de R$".number_format($s / $parcela, 2, ',', '.')." totalizando R$".number_format($s, 2, ',', '.')." no cartão de {$opcao}";
-    // sleep(10);
-    // $_SESSION['cart'] = array();
-    // header("Location: home.php");
     ?>
-    <form  method="post">
-        <input type="submit" name="cancelar" value="Finalizar">
-    </form>
+    <div class="success-payment-wrapper">
+      <div class="success-payment">
+        <?php
+        echo "Parabéns ".$_SESSION['email']."\nVocê finalizou sua compra em {$parcela} parcelas de R$".number_format($s / $parcela, 2, ',', '.')." totalizando R$".number_format($s, 2, ',', '.')." no cartão de {$opcao}.";
+        // sleep(10);
+        // $_SESSION['cart'] = array();
+        // header("Location: home.php");
+        ?>
+      <form  method="post">
+        <input class="btn" type="submit" name="cancelar" value="Finalizar">
+      </form>
+      </div>
+    </div>
+
     <?php
     }
 ?>

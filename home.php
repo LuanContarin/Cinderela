@@ -41,6 +41,9 @@ if (isset($_POST['pesquisa'])) {
     }
     window.location.href = newStr
   }
+  const stopPropagation = evt => {
+    evt.stopPropagation()
+  }
 </script>
 
 <?php
@@ -73,7 +76,7 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
             <div class="preco">
               <?php echo $preco; ?>
             </div>
-            <div class="on-hover">
+            <div class="on-hover" onclick="stopPropagation(event)">
               <div class="info">
                 <input class="prod-num" type="number" name="quantidade" value="1">
                 <input class='prod-btn' type="submit" name="compra" value="Comprar">
