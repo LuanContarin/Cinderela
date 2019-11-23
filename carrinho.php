@@ -58,7 +58,7 @@ if(isset($_POST['excluir'])){
         $carrinho->execute();
         $row = $carrinho->fetch(PDO::FETCH_ASSOC);
         ?>
-          <div class="produto">
+        <div class="produto">
           <div class="prod-title-wrapper">
             <legend class="prod-title" name="nome"><?php echo $row['nome'];?></legend>
           </div>
@@ -72,14 +72,14 @@ if(isset($_POST['excluir'])){
               style="background-image: url('uploads/<?php echo $row['imagem']; ?>')"
             ></div>
           </div>
-
+        </div>
         <?php
     }
     
     ?>
         </div>
-  </div>
-</div>
+      </div>
+    </div>
     <?php
     // if(isset($_POST['card'])){
     //     $opcao=$_POST['cartao'];
@@ -118,23 +118,45 @@ if(isset($_POST['finalizar'])){
     <?php
     }
 ?>
+<div class="carrinho-form-wrapper">
   <div class="carrinho-form">
-    <a href="home.php"><button>Voltar</button></a>
+
     <form method="post">
-      <input type="radio" name="cartao" value="Crédito">Crédito
-      <input type="radio" name="cartao" value="Débito">Débito
-      <input type="radio" name="parcela" value="1" >1
-      <input type="radio" name="parcela" value="2" >2
-      <input type="radio" name="parcela" value="3" >3
-      <input type="radio" name="parcela" value="4" >4
-      <input type="radio" name="parcela" value="5" >5
+      <div class="wrapper-box-wrapper">
+        <div class="wrapper-box">
+          <h2 class="wrapper-title">Forma de pagamento</h2>
+          <div>
+            <input type="radio" name="cartao" value="Débito">Débito
+          </div>
+          <input type="radio" name="cartao" value="Crédito">Crédito
+        </div>
+        <div class="wrapper-box">
+          <h2 class="wrapper-title">Número de parcelas</h2>
+          <div>
+            <input type="radio" name="parcela" value="1" >1 parcela
+          </div>
+          <div>
+            <input type="radio" name="parcela" value="2" >2 parcelas
+          </div>
+          <div>
+            <input type="radio" name="parcela" value="3" >3 parcelas
+          </div>
+          <div>
+            <input type="radio" name="parcela" value="4" >4 parcelas
+          </div>
+          <div>
+            <input type="radio" name="parcela" value="5" >5 parcelas
+          </div>
+        </div>
+      </div>
+      <div class="wrapper-btn">
+        <input class="btn" type="submit" name="finalizar" value="Finalizar compra">
+        <input class="btn" type="submit" value="Cancelar carrinho" name="cancelar">
+      </div>
       <!-- <input type="submit" name="finalizar" value="Continuar"> -->
-      <input type="submit" name="finalizar" value="Finalizar compra">
-    </form>
-    <form method="post">
-      <input type="submit" value="Cancelar carrinho" name="cancelar">
     </form>
   </div>
+</div>
 </div>
 
 

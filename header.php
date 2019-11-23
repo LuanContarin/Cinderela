@@ -14,6 +14,7 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" href="css/forms.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/produtos.css">
+    <link rel="stylesheet" href="css/carrinho.css">
 </head>
 <body>
   <nav class="navbar-wrapper">
