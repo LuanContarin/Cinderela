@@ -16,11 +16,11 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" href="css/produtos.css">
 </head>
 <body>
-  <nav class="navbar-wrapper shadow">
+  <nav class="navbar-wrapper">
     <div class="navbar">
       <div class="left">
         <?php
-          if ($_SESSION['email'] == 'admin@admin.com') {
+          if (isset($_SESSION['email']) && $_SESSION['email'] == 'admin@admin.com') {
             echo '<a class="nav-link" href="./produtos.php">Produtos</span>';
           }
         ?>

@@ -3,6 +3,10 @@ require 'header.php';
 require 'conexion.php';
 ?>
 
+<div class="tac" style="margin: 100px;font-size: 2em;">
+  <h1>Produtos no carrinho</h1>
+</div>
+
 <?php
 if(isset($_POST['compra'])){
     $c = 0;
@@ -39,6 +43,13 @@ if(isset($_POST['excluir'])){
     }
     header("Location: home.php");
 }
+?>
+
+<div class="produtos-wrapper" style='margin-bottom: 300px'>
+  <div class="produtos-cont">
+    <div class="produtos">
+
+<?php
     while(list(, $val) = each($_SESSION['cart'])){
         $id=$val['id'];
         // echo $id;
@@ -47,11 +58,29 @@ if(isset($_POST['excluir'])){
         $carrinho->execute();
         $row = $carrinho->fetch(PDO::FETCH_ASSOC);
         ?>
-        <img src="uploads/<?php echo $row['imagem']; ?>" width = 200px height = 100px>
-        <p><?php echo $row['nome'];?></p>
-        <p>R$ <?php echo $val['quantidade'] * $row['preco'];?></p>
+          <div class="produto">
+          <div class="prod-title-wrapper">
+            <legend class="prod-title" name="nome"><?php echo $row['nome'];?></legend>
+          </div>
+          <div class="cont">
+            <div class="preco">
+              R$ <?php echo $val['quantidade'] * $row['preco'];?>
+            </div>
+          </div>
+          <div class="img-wrapper">
+            <div class="prod-img"
+              style="background-image: url('uploads/<?php echo $row['imagem']; ?>')"
+            ></div>
+          </div>
+
         <?php
     }
+    
+    ?>
+        </div>
+  </div>
+</div>
+    <?php
     // if(isset($_POST['card'])){
     //     $opcao=$_POST['cartao'];
     //     $parcela = $_POST['parcela'];
@@ -89,21 +118,25 @@ if(isset($_POST['finalizar'])){
     <?php
     }
 ?>
-<a href="home.php"><button>Voltar</button></a>
-<form method="post">
-    <input type="radio" name="cartao" value="Crédito">Crédito
-    <input type="radio" name="cartao" value="Débito">Débito
-    <input type="radio" name="parcela" value="1" >1
-    <input type="radio" name="parcela" value="2" >2
-    <input type="radio" name="parcela" value="3" >3
-    <input type="radio" name="parcela" value="4" >4
-    <input type="radio" name="parcela" value="5" >5
-    <!-- <input type="submit" name="finalizar" value="Continuar"> -->
-    <input type="submit" name="finalizar" value="Finalizar compra">
-</form>
-<form method="post">
-<input type="submit" value="Cancelar carrinho" name="cancelar">
-</form>
+  <div class="carrinho-form">
+    <a href="home.php"><button>Voltar</button></a>
+    <form method="post">
+      <input type="radio" name="cartao" value="Crédito">Crédito
+      <input type="radio" name="cartao" value="Débito">Débito
+      <input type="radio" name="parcela" value="1" >1
+      <input type="radio" name="parcela" value="2" >2
+      <input type="radio" name="parcela" value="3" >3
+      <input type="radio" name="parcela" value="4" >4
+      <input type="radio" name="parcela" value="5" >5
+      <!-- <input type="submit" name="finalizar" value="Continuar"> -->
+      <input type="submit" name="finalizar" value="Finalizar compra">
+    </form>
+    <form method="post">
+      <input type="submit" value="Cancelar carrinho" name="cancelar">
+    </form>
+  </div>
+</div>
+
 
 <?php
 require 'footer.php';

@@ -3,9 +3,10 @@ require 'header.php';
 require "conexion.php";
 ?>
 
-  <form method="post">
-    <input type="search" name="pesquisa" id="">
-  </form>
+<div class="tac" style="margin: 100px;font-size: 2em;">
+  <h1>Produtos</h1>
+</div>
+
 <?php 
   $query = "SELECT * FROM produtos";
   $stmt = $con->prepare($query);
@@ -23,7 +24,6 @@ if (isset($_POST['pesquisa'])) {
 ?>
 </td>
 </tr>
-
 <?php
 function GeraColunas($pNumColunas, $pQuery, $con) {
   $resultado =$con->prepare($pQuery);
@@ -78,15 +78,21 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
 }
 ?>
 
-<div class="produtos-wrapper">
-  <div class="produtos">
-    <?php
-      GeraColunas(2, $sql, $con);
-    ?>
+<div class="produtos-wrapper" style='margin-bottom: 300px'>
+  <div class="produtos-cont">
+    <form method="post">
+      <div class="search-produto">
+        <input class="produtos-search" type="search" placeholder="Pesquisar produto..." name="pesquisa" id="">
+        <a href="carrinho.php"><button class="cont-btn" type="button" name="carrinho" >Ver carrinho</button></a>
+      </div>
+    </form>
+    <div class="produtos">
+      <?php
+        GeraColunas(2, $sql, $con);
+      ?>
+  </div>
   </div>
 </div>
-
-<a href="carrinho.php"><button type="button" name="carrinho" >Carrinho</button></a>
 
 <?php
 require 'footer.php';

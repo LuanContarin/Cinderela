@@ -26,12 +26,12 @@ textarea, button, input, body {
 .inp {
   border-radius: 6px;
   border: none;
-  padding: 8px;
+  padding: 12px;
   width: 100%;
   margin-top: 8px;
   box-sizing: border-box;
   font-size: 1em;
-  background-color: var(--back-color);
+  border: 1px solid rgb(200,200,200);
 }
 
 .card {
@@ -40,13 +40,9 @@ textarea, button, input, body {
   padding: 12px;
 }
 
-.shadow {
-  box-shadow: 0 3px 10px rgba(200,200,150,.4);
-}
-
 .title {
-  color: var(--primary);
   margin: 6px 0;
+  font-size: 1.4em;
 }
 
 .tac {
@@ -54,11 +50,10 @@ textarea, button, input, body {
 }
 
 .btn {
-  border: 1px solid var(--primary);
-  padding: 8px;
+  border: 1px solid rgb(200,200,200);
+  padding: 11px;
   background: none;
   cursor: pointer;
-  color: var(--primary);
   width: 100%;
   border-radius: 12px;
   margin-top: 8px;
@@ -77,6 +72,7 @@ textarea, button, input, body {
 
 .btn:hover {
   color: white;
+  border: none;
   background-color: var(--primary);
 }
 
@@ -88,6 +84,9 @@ textarea, button, input, body {
 }
 
 .form {
+  border-radius: 10px;
+  border: 1px solid rgb(200,200,200);
+  padding: 24px;
   transform: translateY(-50px);
   flex-basis: 500px;
 }

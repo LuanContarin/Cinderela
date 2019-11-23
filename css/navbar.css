@@ -1,9 +1,10 @@
 
 .navbar-wrapper {
-  height: 50px;
+  height: 100px;
   align-items: center;
   display: flex;
   background-color: white;
+  border-bottom: 1px solid rgb(200,200,200);
 }
 
 .navbar {
@@ -17,6 +18,7 @@
   color: var(--text);
   text-decoration: none;
   transform: scale(1,1);
+  font-size: 1.2em;
   transition-duration: .2s;
   margin-left: 16px;
 }
