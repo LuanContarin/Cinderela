@@ -83,9 +83,9 @@ if ($num>0) {
       echo "<td>{$quantidade}</td>";
       echo "<td>{$modificado}</td>";
       echo "<td>";
-        echo "<a href='visualizar.php?id={$id}' class='btn btn-info m-r-1em'>Visualizar</a>";
-        echo "<a href='editar.php?id={$id}' class='btn btn-primary m-r-1em'>Editar</a>";
-        echo "<a href='#' onclick='delete_user({$id});'  class='btn btn-danger'>Excluir</a>";
+        echo "<a class='admin-btn' href='visualizar.php?id={$id}'>Visualizar</a>";
+        echo "<a class='admin-btn' href='editar.php?id={$id}'>Editar</a>";
+        echo "<a class='admin-btn' href='#' onclick='delete_user({$id});' >Excluir</a>";
       echo "</td>";
     echo "</tr>";
   }
