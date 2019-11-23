@@ -1,9 +1,9 @@
 <?php
 require 'header.php';
 include 'conexion.php';
-require 'checkLogged.php';
+require 'actions/checkLogged.php';
+require 'actions/checkAdmin.php';
 
-if($_SESSION['email'] === 'admin@admin'){
 ?>
 
  
@@ -118,13 +118,7 @@ if ($num>0) {
 </div>
 </div>
 </div>
-<?php
 
-}
-else {
-  header("Location: login.php");
-}
-?>
 <?php
 require 'footer.php';
 ?>

@@ -1,7 +1,8 @@
 <?php
 require 'header.php';
 include 'conexion.php';
-require 'checkLogged.php';
+require 'actions/checkLogged.php';
+require 'actions/checkAdmin.php';
 ?>
   
 <div class="tac" style="margin: 100px;font-size: 2em;">

@@ -1,7 +1,7 @@
 <?php
 require 'header.php';
 require "conexion.php";
-require 'checkLogged.php';
+require 'actions/checkLogged.php';
 
 ?>
 

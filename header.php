@@ -24,7 +24,7 @@ session_start();
             echo '<a class="nav-link" href="./produtos.php">Produtos</span>';
           }
         ?>
-        <?php if (true) {  ?>
+        <?php if (isset($_SESSION['email'])) {  ?>
           <a class='nav-link' href="./home.php">Home</a>
           <a class='nav-link' href="./carrinho.php">Carrinho</a>
         <?php } ?>

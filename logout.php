@@ -1,5 +1,5 @@
 <?php
-require 'checkLogged.php';
+require 'actions/checkLogged.php';
  session_start();
  session_unset();
  session_destroy();
