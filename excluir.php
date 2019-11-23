@@ -1,5 +1,6 @@
 <?php
 // conexão
+require 'checkLogged.php';
 include 'conexion.php';
  
 try {

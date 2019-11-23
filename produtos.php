@@ -1,9 +1,9 @@
 <?php
 require 'header.php';
 include 'conexion.php';
+require 'checkLogged.php';
 
-if (isset($_SESSION['email'])){
-  if($_SESSION['email'] === 'admin@admin'){
+if($_SESSION['email'] === 'admin@admin'){
 ?>
 
  
@@ -120,9 +120,6 @@ if ($num>0) {
 </div>
 <?php
 
-} else {
-  header('location:home.php');
-}
 }
 else {
   header("Location: login.php");

@@ -1,7 +1,7 @@
 <?php
 require 'header.php';
 require "conexion.php";
-if(isset($_SESSION['email'])){
+require 'checkLogged.php';
 
 ?>
 
@@ -98,7 +98,4 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
 
 <?php
 require 'footer.php';
-} else{
-  header("Location: login.php");
-}
 ?>

@@ -1,6 +1,7 @@
 <?php
 require 'header.php';
 include 'conexion.php';
+require 'checkLogged.php';
 ?>
  
     <!-- container -->

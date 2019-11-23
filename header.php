@@ -1,7 +1,5 @@
 <?php
-if (!isset($_SESSION)) { 
-  session_start(); 
-}
+session_start(); 
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +24,10 @@ if (!isset($_SESSION)) {
             echo '<a class="nav-link" href="./produtos.php">Produtos</span>';
           }
         ?>
-        <a class='nav-link' href="./home.php">Home</a>
-        <a class='nav-link' href="./carrinho.php">Carrinho</a>
+        <?php if (true) {  ?>
+          <a class='nav-link' href="./home.php">Home</a>
+          <a class='nav-link' href="./carrinho.php">Carrinho</a>
+        <?php } ?>
       </div>
       <div class="right">
         <?php
