@@ -6,10 +6,11 @@ if ($_SESSION['email'] == 'admin@admin.com') {
 ?>
 
  
-<div class="container">
-  <div class="page-header">
-      <h1>Cinderela - Produtos</h1>
-  </div>
+<div class="tac" style="margin: 100px;font-size: 2em;">
+  <h1>Admin - Produtos</h1>
+</div>
+<div class="table-wrapper-wrapper">
+  <div class="table-wrapper">
 <?php
 // conexão
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -52,11 +53,11 @@ $stmt->execute();
 $num = $stmt->rowCount();
  
 // link para criação
-echo "<a href='criar.php' class='btn btn-primary m-b-1em'>Adicionar Produto</a>";
+// echo "<a href='criar.php' class='btn btn-primary m-b-1em'>Adicionar Produto</a>";
  
 // checar numero a ser encontrado
 if ($num>0) {
- echo "<table class='table table-hover table-responsive table-bordered'>";
+ echo "<table class='table'>";
   echo "<tr>";
     echo "<th>ID</th>";
     echo "<th>Imagem</th>";
@@ -106,6 +107,8 @@ if ($num>0) {
 }
 ?>
         
+</div>
+</div>
 </div>
 <?php
 
