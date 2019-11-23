@@ -1,6 +1,8 @@
 <?php
 require 'header.php';
 require "conexion.php";
+if(isset($_SESSION['email'])){
+
 ?>
 
 <div class="tac" style="margin: 100px;font-size: 2em;">
@@ -56,7 +58,7 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
             </div>
             <div class="on-hover">
               <div class="info">
-                <input class="prod-num" type="number" name="quantidade">
+                <input class="prod-num" type="number" name="quantidade" value="1">
                 <input class='prod-btn' type="submit" name="compra" value="Comprar">
                 <input class='prod-btn' type="submit" name="excluir" value="Excluir">
               </div>
@@ -96,4 +98,7 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
 
 <?php
 require 'footer.php';
+} else{
+  header("Location: login.php");
+}
 ?>

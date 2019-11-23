@@ -50,6 +50,7 @@ if(isset($_POST['excluir'])){
     <div class="produtos">
 
 <?php
+if(isset($_SESSION['cart'])){
     while(list(, $val) = each($_SESSION['cart'])){
         $id=$val['id'];
         // echo $id;
@@ -64,7 +65,7 @@ if(isset($_POST['excluir'])){
           </div>
           <div class="cont">
             <div class="preco">
-              R$ <?php echo $val['quantidade'] * $row['preco'];?>
+              R$ <?php echo ($val['quantidade'] > 0 ? $val['quantidade'] : 0) * $row['preco'];?>
             </div>
           </div>
           <div class="img-wrapper">
@@ -75,6 +76,9 @@ if(isset($_POST['excluir'])){
         </div>
         <?php
     }
+  }else{
+    echo "Não há produtos no carrinho";
+  }
     
     ?>
         </div>
@@ -94,7 +98,7 @@ if(isset($_POST['finalizar'])){
     $s = 0;
     for($i = 0; $i < sizeof($_SESSION['cart']); $i++){
         $id = $_SESSION['cart'][$i]['id'];
-        $quantidade = $_SESSION['cart'][$i]['quantidade'];
+        $quantidade = $_SESSION['cart'][$i]['quantidade'] > 0 ? $_SESSION['cart'][$i]['quantidade'] : 0;
         $finalizar = $con->prepare("SELECT * FROM produtos WHERE id='$id'");
         $finalizar->execute();
         $row = $finalizar->fetch(PDO::FETCH_ASSOC);

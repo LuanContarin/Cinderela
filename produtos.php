@@ -2,7 +2,8 @@
 require 'header.php';
 include 'conexion.php';
 
-if ($_SESSION['email'] == 'admin@admin.com') {
+if (isset($_SESSION['email'])){
+  if($_SESSION['email'] === 'admin@admin'){
 ?>
 
  
@@ -119,11 +120,12 @@ if ($num>0) {
 </div>
 <?php
 
-} else if (isset($_SESSION['email'])) {
+} else {
   header('location:home.php');
 }
+}
 else {
-  echo "400 nao autorizado";
+  header("Location: login.php");
 }
 ?>
 <?php
