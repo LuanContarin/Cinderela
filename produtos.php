@@ -1,8 +1,8 @@
 <?php
-require 'header.php';
-include 'conexion.php';
 require 'actions/checkLogged.php';
 require 'actions/checkAdmin.php';
+require 'header.php';
+include 'conexion.php';
 
 ?>
 

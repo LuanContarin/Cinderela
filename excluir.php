@@ -1,8 +1,8 @@
 <?php
 // conexão
-include 'conexion.php';
 require 'actions/checkLogged.php';
 require 'actions/checkAdmin.php';
+include 'conexion.php';
  
 try {
      

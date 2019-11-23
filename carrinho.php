@@ -1,7 +1,7 @@
 <?php
+require 'actions/checkLogged.php';
 require 'header.php';
 require 'conexion.php';
-require 'actions/checkLogged.php';
 ?>
 
 <div class="tac" style="margin: 100px;font-size: 2em;">
