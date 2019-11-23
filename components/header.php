@@ -1,7 +1,7 @@
 <?php
-if (!isset($_SESSION)) { 
-  session_start(); 
-}
+session_start();
+include __DIR__.'/../actions/sessionVariables.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -22,16 +22,24 @@ if (!isset($_SESSION)) {
     <div class="navbar">
       <div class="left">
         <?php
-          if (isset($_SESSION['email']) && $_SESSION['email'] == 'admin@admin.com') {
+          global $isLogged, $isAdmin;
+          if ($isLogged && $isAdmin) {
             echo '<a class="nav-link" href="./produtos.php">Produtos</span>';
           }
         ?>
-        <a class='nav-link' href="./home.php">Home</a>
-        <a class='nav-link' href="./carrinho.php">Carrinho</a>
+        <?php global $isLogged;  if ($isLogged) {  ?>
+          <a class='nav-link' href="./home.php">Comprar</a>
+          <a class='nav-link' href="./carrinho.php">Carrinho</a>
+        <?php } ?>
+      </div>
+      <div id="logo">
+        <img src="logo.svg" alt="Logo Cinderela" width="300px">
       </div>
       <div class="right">
         <?php
-          if (isset($_SESSION['email'])) {
+          global $isLogged, $isAdmin, $email;
+          if ($isLogged) {
+            echo $email;
             echo '
               <a class="nav-link" href="logout.php">Logout</a>
             ';

@@ -1,6 +1,6 @@
 <?php
-require "header.php";
-require "conexion.php";
+require 'components/header.php';
+require "actions/conexion.php";
 ?>
 
 <?php
@@ -53,5 +53,5 @@ if (isset($_POST['send'])) {
 </div>
 
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>

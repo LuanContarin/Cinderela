@@ -1,7 +1,7 @@
 <?php
-require 'header.php';
-require "conexion.php";
-if(isset($_SESSION['email'])){
+require 'components/header.php';
+require 'actions/checkLogged.php';
+require "actions/conexion.php";
 
 ?>
 
@@ -26,6 +26,26 @@ if (isset($_POST['pesquisa'])) {
 ?>
 </td>
 </tr>
+
+<script>
+  const verProduto = id => {
+    let url = document.URL
+    const values = url.split("/")
+    let newStr = ""
+    for (let i = 0; i < values.length;i++) {
+      if (i === values.length - 1) {
+        newStr += `visualizar.php?id=${id}"` 
+      } else {
+        newStr += values[i] + "/"
+      }
+    }
+    window.location.href = newStr
+  }
+  const stopPropagation = evt => {
+    evt.stopPropagation()
+  }
+</script>
+
 <?php
 function GeraColunas($pNumColunas, $pQuery, $con) {
   $resultado =$con->prepare($pQuery);
@@ -47,7 +67,7 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
     
       if ($intCont == 0) echo "<tr>\n";
       ?>
-      <div class="produto">
+      <div class="produto" onclick='verProduto(<?php echo $cod ?>)'>
         <form action="carrinho.php?id=<?php echo $cod;?>" method="post">
           <div class="prod-title-wrapper">
             <legend class="prod-title" name="nome"><?php echo $nome; ?></legend>
@@ -56,7 +76,7 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
             <div class="preco">
               <?php echo $preco; ?>
             </div>
-            <div class="on-hover">
+            <div class="on-hover" onclick="stopPropagation(event)">
               <div class="info">
                 <input class="prod-num" type="number" name="quantidade" value="1">
                 <input class='prod-btn' type="submit" name="compra" value="Comprar">
@@ -97,8 +117,5 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
 </div>
 
 <?php
-require 'footer.php';
-} else{
-  header("Location: login.php");
-}
+require 'components/footer.php';
 ?>

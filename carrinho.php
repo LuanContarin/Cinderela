@@ -1,6 +1,7 @@
 <?php
-require 'header.php';
-require 'conexion.php';
+require 'components/header.php';
+require 'actions/checkLogged.php';
+require 'actions/conexion.php';
 ?>
 
 <div class="tac" style="margin: 100px;font-size: 2em;">
@@ -65,6 +66,7 @@ if(isset($_SESSION['cart'])){
           </div>
           <div class="cont">
             <div class="preco">
+              <?php echo $val['quantidade'] ?> -  
               R$ <?php echo ($val['quantidade'] > 0 ? $val['quantidade'] : 0) * $row['preco'];?>
             </div>
           </div>
@@ -77,7 +79,11 @@ if(isset($_SESSION['cart'])){
         <?php
     }
   }else{
-    echo "Não há produtos no carrinho";
+    ?>
+    <div style='text-align: center'>
+      <h3>Nâo há produtos no carrinho.</h3>
+    </div>
+    <?php
   }
     
     ?>
@@ -111,14 +117,21 @@ if(isset($_POST['finalizar'])){
     // $header = "Mime Version: 1.0\n". "Content-type: text/html; charset=utf-8\n". "From: vini.bispo015@gmail.com";
     // echo $_SESSION['email'];
     // echo $header;
-    echo "Parabéns ".$_SESSION['email']."\nVocê finalizou sua compra em {$parcela} parcelas de R$".number_format($s / $parcela, 2, ',', '.')." totalizando R$".number_format($s, 2, ',', '.')." no cartão de {$opcao}";
-    // sleep(10);
-    // $_SESSION['cart'] = array();
-    // header("Location: home.php");
     ?>
-    <form  method="post">
-        <input type="submit" name="cancelar" value="Finalizar">
-    </form>
+    <div class="success-payment-wrapper">
+      <div class="success-payment">
+        <?php
+        echo "Parabéns ".$_SESSION['email']."\nVocê finalizou sua compra em {$parcela} parcelas de R$".number_format($s / $parcela, 2, ',', '.')." totalizando R$".number_format($s, 2, ',', '.')." no cartão de {$opcao}.";
+        // sleep(10);
+        // $_SESSION['cart'] = array();
+        // header("Location: home.php");
+        ?>
+      <form  method="post">
+        <input class="btn" type="submit" name="cancelar" value="Finalizar">
+      </form>
+      </div>
+    </div>
+
     <?php
     }
 ?>
@@ -165,5 +178,5 @@ if(isset($_POST['finalizar'])){
 
 
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>

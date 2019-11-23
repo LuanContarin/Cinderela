@@ -1,13 +1,10 @@
 <?php
-require "header.php";
-require "conexion.php";
+require 'components/header.php';
+require "actions/conexion.php";
+require 'actions/checkLogged.php';
+
 ?>
  
- <div class="tac" style="margin: 100px;font-size: 2em;">
-  <h1>Admin - Visualizar produto</h1>
-</div>
-<div class="table-wrapper-wrapper">
-  <div class="table-wrapper">
 <?php
 
 $id=isset($_GET['id']) ? $_GET['id'] : die('ERRO: ID não encontrado.');
@@ -35,6 +32,13 @@ try {
   $desconto = $row['desconto'];
   $quantidade = $row['quantidade'];
   $modificado = $row['modificado'];
+  ?>
+   <div class="tac" style="margin: 100px;font-size: 2em;">
+    <h1><?php echo $nome ?></h1>
+  </div>
+  <div class="table-wrapper-wrapper">
+    <div class="table-wrapper">
+  <?php
 
 }
  
@@ -43,17 +47,21 @@ catch (PDOException $exception) {
   die('ERRO: ' . $exception->getMessage());
 }
 ?>
- 
-    <!-- HTML visualizar -->
+
+<div style="display: flex;justify-content: center;margin-bottom: 24px;">
+  <div>
+  <?php echo $imagem ? "<img src='uploads/{$imagem}' style='width:500px;' />" : "Sem imagem disponível."; ?>
+    <form action="carrinho.php?id=<?php echo $id;?>" method="post">
+      <div style="height: 27px;display: flex;justify-content: center">
+        <input class="prod-num" type="number" name="quantidade" value="1">
+        <input class='prod-btn' type="submit" name="compra" value="Comprar">
+        <input class='prod-btn' type="submit" name="excluir" value="Excluir">
+      </div>
+    </div>
+  </form>
+</div>
 
 <table style="width: 100%">
-  <tr>
-    <td>Imagem</td>
-    <td><?php echo htmlspecialchars($row['imagem'], ENT_QUOTES);  ?></td>
-    <td> 
-      <?php echo $imagem ? "<img src='uploads/{$imagem}' style='width:300px;' />" : "Sem imagem disponível."; ?>
-    </td>
-  </tr>
   <tr>
     <td>Nome</td>
     <td><?php echo htmlspecialchars($nome, ENT_QUOTES);  ?></td>
@@ -78,17 +86,11 @@ catch (PDOException $exception) {
     <td>Modificado</td>
     <td><?php echo htmlspecialchars($modificado, ENT_QUOTES);  ?></td>
   </tr>
-  <tr>
-    <td></td>
-    <td>
-      <a href='produtos.php' class='admin-btn'>Voltar</a>
-  </td>
-  </tr>
 </table>
 </div>
 </div>
 </div>
      
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>
