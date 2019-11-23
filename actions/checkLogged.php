@@ -1,3 +1,4 @@
+
 <?php
 $estaLogado = isset($_SESSION['email']);
 if (!$estaLogado) {

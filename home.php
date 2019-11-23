@@ -1,7 +1,7 @@
 <?php
+require 'components/header.php';
 require 'actions/checkLogged.php';
-require 'header.php';
-require "conexion.php";
+require "actions/conexion.php";
 
 ?>
 
@@ -97,5 +97,5 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
 </div>
 
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>

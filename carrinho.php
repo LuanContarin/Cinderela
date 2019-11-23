@@ -1,7 +1,7 @@
 <?php
+require 'components/header.php';
 require 'actions/checkLogged.php';
-require 'header.php';
-require 'conexion.php';
+require 'actions/conexion.php';
 ?>
 
 <div class="tac" style="margin: 100px;font-size: 2em;">
@@ -166,5 +166,5 @@ if(isset($_POST['finalizar'])){
 
 
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>

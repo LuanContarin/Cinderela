@@ -1,6 +1,7 @@
 <?php
 session_start();
-include 'actions/sessionVariables.php'
+include __DIR__.'/../actions/sessionVariables.php';
+
 ?>
 
 <!DOCTYPE html>

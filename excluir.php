@@ -1,8 +1,9 @@
 <?php
 // conexão
+session_start();
 require 'actions/checkLogged.php';
 require 'actions/checkAdmin.php';
-include 'conexion.php';
+include 'actions/conexion.php';
  
 try {
      

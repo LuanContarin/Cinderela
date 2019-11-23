@@ -1,6 +1,6 @@
 <?php
-$isAdmin = $_SESSION['email'] === 'admin@admin';
+$isAdmin = isset($_SESSION['email']) && $_SESSION['email'] === 'admin@admin';
 if (!$isAdmin) {
-  header('Location: home.php');
+  header('Location:index.php');
 }
 ?>

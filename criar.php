@@ -1,8 +1,8 @@
 <?php
+require 'components/header.php';
 require 'actions/checkLogged.php';
 require 'actions/checkAdmin.php';
-require 'header.php';
-include 'conexion.php';
+include 'actions/conexion.php';
 ?>
   
 <div class="tac" style="margin: 100px;font-size: 2em;">
@@ -135,5 +135,5 @@ if ($_POST) {
 </div>
 
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>

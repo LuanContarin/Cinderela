@@ -2,8 +2,8 @@
 Email -> usar name="email"
 Senha -> usar name="senha" -->
 <?php 
-require "header.php";
-require "conexion.php";
+require 'components/header.php';
+require "actions/conexion.php";
 
 if (isset($_POST['senha'])) {
   $email = addslashes($_POST['email']);
@@ -63,5 +63,5 @@ if (isset($_POST['senha'])) {
 </div>
 
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>

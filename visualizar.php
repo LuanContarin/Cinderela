@@ -1,8 +1,7 @@
 <?php
-require "header.php";
-require "conexion.php";
+require 'components/header.php';
+require "actions/conexion.php";
 require 'actions/checkLogged.php';
-require 'actions/checkAdmin.php';
 
 ?>
  
@@ -93,5 +92,5 @@ catch (PDOException $exception) {
 </div>
      
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>

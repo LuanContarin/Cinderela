@@ -1,12 +1,12 @@
 <?php
+require 'components/header.php';
 require 'actions/checkLogged.php';
 require 'actions/checkAdmin.php';
-require 'header.php';
-include 'conexion.php';
+include 'actions/conexion.php';
 
 ?>
 
- 
+
 <div class="tac" style="margin: 100px;font-size: 2em;">
   <h1>Admin - Produtos</h1>
 </div>
@@ -27,7 +27,7 @@ function delete_user( id ){
      
     var answer = confirm('Você tem certeza?');
     if (answer){
-        window.location = 'excluir.php?id=' + id;
+        window.location = 'admin/excluir.php?id=' + id;
     } 
 }
 </script>
@@ -58,7 +58,7 @@ $num = $stmt->rowCount();
 
 
 <div class="admin-btn-wrapper">
-  <a href='criar.php' class='admin-btn' >Adicionar Produto</a>
+  <a href='admin/criar.php' class='admin-btn' >Adicionar Produto</a>
 </div>
 
 <?php
@@ -92,7 +92,7 @@ if ($num>0) {
       echo "<td>{$modificado}</td>";
       echo "<td>";
         echo "<a class='admin-btn' href='visualizar.php?id={$id}'>Visualizar</a>";
-        echo "<a class='admin-btn' href='editar.php?id={$id}'>Editar</a>";
+        echo "<a class='admin-btn' href='admin/editar.php?id={$id}'>Editar</a>";
         echo "<a class='admin-btn' href='#' onclick='delete_user({$id});' >Excluir</a>";
       echo "</td>";
     echo "</tr>";
@@ -109,7 +109,7 @@ if ($num>0) {
   $total_rows = $row['total_rows'];
 
   $page_url="produtos.php?";
-  include_once "paginacao.php";
+  include_once "actions/paginacao.php";
 } else {
   echo "<div class='alert alert-danger'>Nenhum produto encontrado.</div>";
 }
@@ -120,5 +120,5 @@ if ($num>0) {
 </div>
 
 <?php
-require 'footer.php';
+require 'components/footer.php';
 ?>
