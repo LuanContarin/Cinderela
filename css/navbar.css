@@ -38,3 +38,22 @@
   top: -40px;
   transform: translateX(-50%);
 }
+
+@media only screen and (max-width: 600px) {
+  #logo {
+    display: none;
+  }
+
+  .navbar-wrapper {
+    height: 60px;
+  }
+
+  .nav-link {
+    font-size: 1em;
+    margin-left: 5px;
+  }
+
+  .navbar {
+    margin: 0 18px;
+  }
+}

@@ -6,7 +6,7 @@
 
 :root {
   --back-color: #f7f7f7;
-  --primary: #ef84f1;
+  --primary: #45969E;
   --red: #dc4141;
   --blue: #5b7ae1;
   --txt: #707070;
@@ -81,6 +81,7 @@ textarea, button, input, body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin: 0 8px;
 }
 
 .form {
