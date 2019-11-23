@@ -19,6 +19,11 @@ table {
   word-break: break-all;
 }
 
+.admin-btn-wrapper {
+  margin: 16px 0;
+  width: 200px;
+}
+
 th, td {
   padding: 15px;
 }

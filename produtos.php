@@ -53,8 +53,15 @@ $stmt->execute();
 $num = $stmt->rowCount();
  
 // link para criação
-// echo "<a href='criar.php' class='btn btn-primary m-b-1em'>Adicionar Produto</a>";
- 
+?>
+
+
+<div class="admin-btn-wrapper">
+  <a href='criar.php' class='admin-btn' >Adicionar Produto</a>
+</div>
+
+<?php
+
 // checar numero a ser encontrado
 if ($num>0) {
  echo "<table class='table'>";
