@@ -47,24 +47,21 @@ catch (PDOException $exception) {
   die('ERRO: ' . $exception->getMessage());
 }
 ?>
- 
-    <!-- HTML visualizar -->
+
+<div style="display: flex;justify-content: center;margin-bottom: 24px;">
+  <div>
+  <?php echo $imagem ? "<img src='uploads/{$imagem}' style='width:500px;' />" : "Sem imagem disponível."; ?>
+    <form action="carrinho.php?id=<?php echo $id;?>" method="post">
+      <div style="height: 27px;display: flex;justify-content: center">
+        <input class="prod-num" type="number" name="quantidade" value="1">
+        <input class='prod-btn' type="submit" name="compra" value="Comprar">
+        <input class='prod-btn' type="submit" name="excluir" value="Excluir">
+      </div>
+    </div>
+  </form>
+</div>
 
 <table style="width: 100%">
-  <tr>
-    <td>Imagem</td>
-    <td><?php echo htmlspecialchars($row['imagem'], ENT_QUOTES);  ?></td>
-    <td> 
-      <?php echo $imagem ? "<img src='uploads/{$imagem}' style='width:300px;' />" : "Sem imagem disponível."; ?>
-      <form action="carrinho.php?id=<?php echo $cod;?>" method="post">
-        <div style="height: 27px">
-          <input class="prod-num" type="number" name="quantidade" value="1">
-          <input class='prod-btn' type="submit" name="compra" value="Comprar">
-          <input class='prod-btn' type="submit" name="excluir" value="Excluir">
-        </div>
-      </form>
-    </td>
-  </tr>
   <tr>
     <td>Nome</td>
     <td><?php echo htmlspecialchars($nome, ENT_QUOTES);  ?></td>
