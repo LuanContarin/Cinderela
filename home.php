@@ -26,6 +26,23 @@ if (isset($_POST['pesquisa'])) {
 ?>
 </td>
 </tr>
+
+<script>
+  const verProduto = id => {
+    let url = document.URL
+    const values = url.split("/")
+    let newStr = ""
+    for (let i = 0; i < values.length;i++) {
+      if (i === values.length - 1) {
+        newStr += `visualizar.php?id=${id}"` 
+      } else {
+        newStr += values[i] + "/"
+      }
+    }
+    window.location.href = newStr
+  }
+</script>
+
 <?php
 function GeraColunas($pNumColunas, $pQuery, $con) {
   $resultado =$con->prepare($pQuery);
@@ -47,7 +64,7 @@ function GeraColunas($pNumColunas, $pQuery, $con) {
     
       if ($intCont == 0) echo "<tr>\n";
       ?>
-      <div class="produto">
+      <div class="produto" onclick='verProduto(<?php echo $cod ?>)'>
         <form action="carrinho.php?id=<?php echo $cod;?>" method="post">
           <div class="prod-title-wrapper">
             <legend class="prod-title" name="nome"><?php echo $nome; ?></legend>

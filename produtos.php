@@ -3,7 +3,6 @@ require 'components/header.php';
 require 'actions/checkLogged.php';
 require 'actions/checkAdmin.php';
 include 'actions/conexion.php';
-
 ?>
 
 
