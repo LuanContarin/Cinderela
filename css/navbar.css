@@ -9,6 +9,7 @@
 
 .navbar {
   display: flex;
+  position: relative;
   justify-content: space-between;
   margin: 0 72px;
   flex-basis: 100%;
@@ -29,4 +30,11 @@
 
 .nav-link:active {
   transform: scale(.9,.9);
+}
+
+#logo {
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%);
 }

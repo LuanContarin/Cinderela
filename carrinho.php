@@ -79,7 +79,11 @@ if(isset($_SESSION['cart'])){
         <?php
     }
   }else{
-    echo "Não há produtos no carrinho";
+    ?>
+    <div style='text-align: center'>
+      <h3>Nâo há produtos no carrinho.</h3>
+    </div>
+    <?php
   }
     
     ?>

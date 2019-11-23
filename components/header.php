@@ -32,6 +32,9 @@ include __DIR__.'/../actions/sessionVariables.php';
           <a class='nav-link' href="./carrinho.php">Carrinho</a>
         <?php } ?>
       </div>
+      <div id="logo">
+        <img src="logo.svg" alt="Logo Cinderela" width="300px">
+      </div>
       <div class="right">
         <?php
           global $isLogged, $isAdmin, $email;
