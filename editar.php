@@ -1,13 +1,14 @@
 <?php
-require 'header.php'
+require 'header.php';
 include 'conexion.php';
 ?>
  
     <!-- container -->
-<div class="container">
-  <div class="page-header">
-    <h1>Editar Produto</h1>
-  </div>
+<div class="tac" style="margin: 100px;font-size: 2em;">
+  <h1>Admin - Editar produto</h1>
+</div>
+<div class="table-wrapper-wrapper">
+  <div class="table-wrapper">
     <!-- PHP editar -->
 <?php
 
@@ -127,7 +128,7 @@ if ($_POST) {
 
     <!-- HTML editar -->
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?id={$id}");?>" enctype="multipart/form-data" method="POST">
-  <table class='table table-hover table-responsive table-bordered'>
+  <table style="width: 100%">
     <tr>
       <td>Imagem</td>
       <td><input type='file' name='imagem' class='form-control' /></td>
@@ -155,14 +156,15 @@ if ($_POST) {
     <tr>
       <td></td>
       <td>
-        <input type='submit' value='Salvar Mudanças' class='admin-btn' />
+        <input type='submit' value='Salvar Mudanças' style="background: none;fotn-size: 1em;" class='admin-btn'/>
       </td>
     </tr>
   </table>
 </form>
          
 </div>
+</div>
 
 <?php
-require 'footer.php'
+require 'footer.php';
 ?>
