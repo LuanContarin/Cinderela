@@ -66,6 +66,7 @@ if(isset($_SESSION['cart'])){
           </div>
           <div class="cont">
             <div class="preco">
+              <?php echo $val['quantidade'] ?> -  
               R$ <?php echo ($val['quantidade'] > 0 ? $val['quantidade'] : 0) * $row['preco'];?>
             </div>
           </div>
