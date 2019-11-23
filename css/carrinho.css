@@ -32,7 +32,7 @@
   padding: 14px;
   border-radius: 18px;
   display: inline-block;
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(220,220,220);
 }
 
 .wrapper-box + .wrapper-box {

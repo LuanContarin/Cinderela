@@ -17,7 +17,7 @@
 
 .produto {
   position: relative;
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(220,220,220);
   border-radius: 8px;
   transform: scale(1,1);
   transition-duration: .15s;
@@ -42,7 +42,7 @@
   height: 30px;
   border-radius: 80px;
   align-items: center;
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(220,220,220);
   transition-duration: .15s;
   opacity: 1;
   overflow: hidden;
@@ -109,11 +109,11 @@
   border-radius: 50px;
   padding: 6px;
   border: none;
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(220,220,220);
 }
 
 .prod-btn {
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(220,220,220);
   height: 100%;
   background: none;
   cursor: pointer;
@@ -139,7 +139,7 @@
   font-size: 1em;
   margin-bottom: 80px;
   border-radius: 50px;
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(220,220,220);
   width: 80%;
 }
 
@@ -148,7 +148,7 @@
   height: 43px;
   width: 18%;
   background: none;
-  border: 1px solid rgb(200,200,200);
+  border: 1px solid rgb(220,220,220);
   border-radius: 50px;
   font-size: 1em;
   cursor: pointer;
