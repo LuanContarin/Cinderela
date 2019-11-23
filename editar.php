@@ -155,8 +155,7 @@ if ($_POST) {
     <tr>
       <td></td>
       <td>
-        <input type='submit' value='Salvar Mudanças' class='btn btn-primary' />
-        <a href='produtos.php' class='btn btn-danger'>Voltar</a>
+        <input type='submit' value='Salvar Mudanças' class='admin-btn' />
       </td>
     </tr>
   </table>

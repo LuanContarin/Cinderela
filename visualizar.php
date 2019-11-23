@@ -3,10 +3,11 @@ require "header.php";
 require "conexion.php";
 ?>
  
-<div class="container">
-  <div class="page-header">
-    <h1>Visualizar Produto</h1>
-  </div>
+ <div class="tac" style="margin: 100px;font-size: 2em;">
+  <h1>Admin - Visualizar produto</h1>
+</div>
+<div class="table-wrapper-wrapper">
+  <div class="table-wrapper">
 <?php
 
 $id=isset($_GET['id']) ? $_GET['id'] : die('ERRO: ID não encontrado.');
@@ -45,7 +46,7 @@ catch (PDOException $exception) {
  
     <!-- HTML visualizar -->
 
-<table class='table table-hover table-responsive table-bordered'>
+<table style="width: 100%">
   <tr>
     <td>Imagem</td>
     <td><?php echo htmlspecialchars($row['imagem'], ENT_QUOTES);  ?></td>
@@ -80,10 +81,12 @@ catch (PDOException $exception) {
   <tr>
     <td></td>
     <td>
-      <a href='produtos.php' class='btn btn-danger'>Voltar</a>
+      <a href='produtos.php' class='admin-btn'>Voltar</a>
   </td>
   </tr>
 </table>
+</div>
+</div>
 </div>
      
 <?php
