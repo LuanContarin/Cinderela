@@ -1,14 +1,17 @@
+<ul class="paginacao pull-left margin-zero mt0"></ul>
+
 <?php
-echo "<ul class='pagination pull-left margin-zero mt0'>";
- 
+
 // botão primeira página
 if ($page>1) {
   $prev_page = $page - 1;
-  echo "<li>";
-    echo "<a href='{$page_url}page={$prev_page}'>";
-      echo "<span style='margin:0 .5em;'>&laquo;</span>";
-    echo "</a>";
-  echo "</li>";
+  ?>
+  <li>
+    <a href="<?php echo $page_url ?>page=<?php echo $prev_page ?>">
+      <span style="margin: 0 .5em;"></span>
+    </a>
+  </li>
+  <?php
 }
  
 // números clicáveis
@@ -23,16 +26,20 @@ for ($x=$initial_num; $x<$condition_limit_num; $x++) {
   if (($x > 0) && ($x <= $total_pages)) {
     // pagina atual
   if ($x == $page) {
-    echo "<li class='active'>";
-      echo "<a href='javascript::void();'>{$x}</a>";
-    echo "</li>";
+    ?>
+    <li class="active">
+      <a href="javascript::void()"><?php echo $x ?></a>
+    </li>
+    <?php
   }
 
   // not current page
   else {
-    echo "<li>";
-      echo " <a href='{$page_url}page={$x}'>{$x}</a> ";
-    echo "</li>";
+    ?>
+    <li>
+      <a href="<?php echo $page_url ?>page=<?php echo $x0 ?>"></a>
+    </li>
+    <?php
     }
   }
 }
