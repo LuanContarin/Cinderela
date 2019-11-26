@@ -15,7 +15,7 @@ include 'actions/conexion.php';
 // conexão
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
  
-$records_per_page = 5;
+$records_per_page = 1000;
  
 $from_record_num = ($records_per_page * $page) - $records_per_page;
 ?>
@@ -108,7 +108,6 @@ if ($num>0) {
   $total_rows = $row['total_rows'];
 
   $page_url="produtos.php?";
-  include_once "components/paginacao.php";
 } else {
   echo "<div class='alert alert-danger'>Nenhum produto encontrado.</div>";
 }
