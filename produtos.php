@@ -108,7 +108,7 @@ if ($num>0) {
   $total_rows = $row['total_rows'];
 
   $page_url="produtos.php?";
-  include_once "actions/paginacao.php";
+  include_once "components/paginacao.php";
 } else {
   echo "<div class='alert alert-danger'>Nenhum produto encontrado.</div>";
 }

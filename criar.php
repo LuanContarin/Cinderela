@@ -36,55 +36,57 @@ if ($_POST) {
     $desconto=htmlspecialchars(strip_tags($_POST['desconto']));
     $quantidade=htmlspecialchars(strip_tags($_POST['quantidade']));
 
-    // binds
-    $stmt->bindParam(':imagem', $imagem);
-    $stmt->bindParam(':nome', $nome);
-    $stmt->bindParam(':descricao', $descricao);
-    $stmt->bindParam(':preco', $preco);
-    $stmt->bindParam(':desconto', $desconto);
-    $stmt->bindParam(':quantidade', $quantidade);
-
-    //Executar a query
-    if ($stmt ->execute()) {
-      echo "<div class='alert alert-success'>As informações foram salvas.</div>";
-      if ($imagem) {
-        $target_directory = "uploads/";
-        $target_file = $target_directory . $imagem;
-        $file_type = pathinfo($target_file, PATHINFO_EXTENSION);
-        // erro
-        $file_upload_error_messages="";
-      }
-      //verificar imagem
-      $check = getimagesize($_FILES["imagem"]["tmp_name"]);
-      if ($check!==false) {
-
+    if ($nome || $descricao || $preco || $desconto || $quantidade) {
+      // binds
+      $stmt->bindParam(':imagem', $imagem);
+      $stmt->bindParam(':nome', $nome);
+      $stmt->bindParam(':descricao', $descricao);
+      $stmt->bindParam(':preco', $preco);
+      $stmt->bindParam(':desconto', $desconto);
+      $stmt->bindParam(':quantidade', $quantidade);
+  
+      //Executar a query
+      if ($stmt ->execute()) {
+        echo "<div class='alert alert-success'>As informações foram salvas.</div>";
+        if ($imagem) {
+          $target_directory = "uploads/";
+          $target_file = $target_directory . $imagem;
+          $file_type = pathinfo($target_file, PATHINFO_EXTENSION);
+          // erro
+          $file_upload_error_messages="";
+        }
+        //verificar imagem
+        $check = getimagesize($_FILES["imagem"]["tmp_name"]);
+        if ($check!==false) {
+  
+        } else {
+          $file_upload_error_messages.="<div>Arquivo não compativel.</div>";
+        }
+        $allowed_file_types=array("jpg", "jpeg", "png", "gif");
+        if (!in_array($file_type, $allowed_file_types)) {
+          $file_upload_error_messages.="<div>Apenas JPG, JPEG, PNG e GIF são aceitos. </div>"; 
+        }
+        if (file_exists($target_file)) {
+          $file_upload_error_messages.="<div>Imagem já existente.</div>";
+        }
+        if ($_FILES['imagem']['size'] > (1024000)) {
+          $file_upload_error_messages.="<div>A imagem deve ter menos de 1MB.</div>";
+        }
+        if (!is_dir($target_directory)) {
+          mkdir($target_directory, 077, true);
+        }
+        if (empty($file_upload_error_messages)) {
+          move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file);
+        }
+        else {
+          echo "<div class='alert alert-danger'>";
+            echo "<div>{$file_upload_error_messages}</div>";
+            echo "<div>Faça update para enviar a foto.</div>";
+          echo "</div>";
+        }
       } else {
-        $file_upload_error_messages.="<div>Arquivo não compativel.</div>";
+        echo "<div class='alert alert-danger'>Não foi possível salvar.</div>";
       }
-      $allowed_file_types=array("jpg", "jpeg", "png", "gif");
-      if (!in_array($file_type, $allowed_file_types)) {
-        $file_upload_error_messages.="<div>Apenas JPG, JPEG, PNG e GIF são aceitos. </div>"; 
-      }
-      if (file_exists($target_file)) {
-        $file_upload_error_messages.="<div>Imagem já existente.</div>";
-      }
-      if ($_FILES['imagem']['size'] > (1024000)) {
-        $file_upload_error_messages.="<div>A imagem deve ter menos de 1MB.</div>";
-      }
-      if (!is_dir($target_directory)) {
-        mkdir($target_directory, 077, true);
-      }
-      if (empty($file_upload_error_messages)) {
-        move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file);
-      }
-      else {
-        echo "<div class='alert alert-danger'>";
-          echo "<div>{$file_upload_error_messages}</div>";
-          echo "<div>Faça update para enviar a foto.</div>";
-        echo "</div>";
-      }
-    } else {
-      echo "<div class='alert alert-danger'>Não foi possível salvar.</div>";
     }
   }
 

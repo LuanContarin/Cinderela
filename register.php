@@ -13,7 +13,7 @@ if (isset($_POST['send'])) {
   $msg = '';
   $hasError = false;
   if (empty($nome) || empty($email) || empty($senha)) {
-    $msg = 'Preencha todos os campos';
+    $msg = 'Preencha todos os campos.';
     $hasError = true;
   } else {
     if ($senha == $confirma){
@@ -24,7 +24,7 @@ if (isset($_POST['send'])) {
       header('Location: login.php');
     }
     else {
-      $msg = 'As senhas não batem';
+      $msg = 'As senhas não batem.';
       $hasError = true;
     }
   }
