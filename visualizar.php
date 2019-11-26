@@ -7,7 +7,13 @@ require 'actions/checkLogged.php';
  
 <?php
 
-$id=isset($_GET['id']) ? $_GET['id'] : die('ERRO: ID não encontrado.');
+$idExiste = isset($_GET['id']);
+if (!$idExiste) {
+  echo 'javascript:window.history.go(-1)';
+  exit;
+}
+
+$id = $_GET['id'];
 
 // Visualizar informações do produto
 try {
