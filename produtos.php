@@ -26,7 +26,7 @@ function delete_user( id ){
      
     var answer = confirm('Você tem certeza?');
     if (answer){
-        window.location = 'admin/excluir.php?id=' + id;
+        window.location = 'excluir.php?id=' + id;
     } 
 }
 </script>
@@ -57,7 +57,7 @@ $num = $stmt->rowCount();
 
 
 <div class="admin-btn-wrapper">
-  <a href='admin/criar.php' class='admin-btn' >Adicionar Produto</a>
+  <a href='criar.php' class='admin-btn' >Adicionar Produto</a>
 </div>
 
 <?php
@@ -91,7 +91,7 @@ if ($num>0) {
       echo "<td>{$modificado}</td>";
       echo "<td>";
         echo "<a class='admin-btn' href='visualizar.php?id={$id}'>Visualizar</a>";
-        echo "<a class='admin-btn' href='admin/editar.php?id={$id}'>Editar</a>";
+        echo "<a class='admin-btn' href='editar.php?id={$id}'>Editar</a>";
         echo "<a class='admin-btn' href='#' onclick='delete_user({$id});' >Excluir</a>";
       echo "</td>";
     echo "</tr>";
