@@ -39,13 +39,12 @@
   justify-content: center;
   background-color: white;
   padding: 0 10px;
-  height: 30px;
+  min-height: 30px;
   border-radius: 80px;
   align-items: center;
   border: 1px solid rgb(220,220,220);
   transition-duration: .15s;
   opacity: 1;
-  overflow: hidden;
 }
 
 .on-hover {
@@ -58,7 +57,6 @@
 }
 
 .produto:hover .prod-title-wrapper {
-  width: 0;
   opacity: 0;
 }
 

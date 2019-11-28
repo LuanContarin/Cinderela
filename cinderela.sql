@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Nov-2019 às 22:56
--- Versão do servidor: 10.4.8-MariaDB
--- versão do PHP: 7.1.33
+-- Generation Time: 28-Nov-2019 às 18:12
+-- Versão do servidor: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `cinderela`
+-- Database: `cinderela`
 --
 
 -- --------------------------------------------------------
@@ -36,7 +36,7 @@ CREATE TABLE `produtos` (
   `preco` double NOT NULL,
   `desconto` double DEFAULT NULL,
   `quantidade` int(11) NOT NULL,
-  `modificado` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -83,7 +83,43 @@ INSERT INTO `produtos` (`id`, `imagem`, `nome`, `descricao`, `preco`, `desconto`
 (47, '37.jpg', 'Carteira Feminina de Couro com Ponteira', 'Carteira feminina com cinco porta cartões, porta notas e por', 90, 5, 77, '2019-11-26 21:43:30'),
 (48, '38.jpg', 'Chinelo Feminino Modare', 'Chinelo feminino mode UltraConforto NoBuck com alta absorção', 99, 8, 23, '2019-11-26 21:44:08'),
 (49, '39.jpg', 'Tamanco Feminino Strass', 'Tamanco feminino confeccionado em couro legítimo solado com ', 250, 10, 99, '2019-11-26 21:44:39'),
-(50, '40.jpg', 'Sandália Feminina Mariotta', 'Sandália feminina confeccionada em material sintético com ac', 150, 8, 5, '2019-11-26 21:45:20');
+(50, '40.jpg', 'Sandália Feminina Mariotta', 'Sandália feminina confeccionada em material sintético com ac', 150, 8, 5, '2019-11-26 21:45:20'),
+(52, 'CIND1.jpg', 'Melissa Atena', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 189, 10, 20, '2019-11-27 16:43:45'),
+(53, 'CIND2.jpg', 'Melissa Atena', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 189, 10, 20, '2019-11-27 17:00:58'),
+(54, 'CIND3.jpg', 'Melissa Atena', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 189, 10, 20, '2019-11-27 17:01:19'),
+(55, 'CIND4.jpg', 'Melissa Atena', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 189, 10, 20, '2019-11-27 17:01:44'),
+(56, 'CIND5.jpg', 'Melissa Atena', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 189, 10, 20, '2019-11-27 17:02:06'),
+(57, 'CIND6.jpg', 'Melissa Lip Platform', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 139, 10, 22, '2019-11-27 17:05:04'),
+(60, 'CIND7.jpg', 'Melissa Lip Platform', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 139, 10, 10, '2019-11-27 17:07:16'),
+(63, 'CIND8.jpg', 'Melissa Lip Platform', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 139, 15, 8, '2019-11-27 17:11:12'),
+(64, 'CIND9.jpg', 'Melissa Lip Platform', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 139, 20, 30, '2019-11-27 17:11:48'),
+(65, 'CIND10.jpg', 'Melissa Mellow', 'MATERIAL\r\nExterno:\r\nInterno: PVC\r\nSolado: PVC\r\nPESO\r\nAprox. ', 179, 15, 22, '2019-11-27 17:13:35'),
+(66, 'CIND11.jpg', 'Beach Slide', 'MATERIAL\r\nExterno: Brilhosa ou Fosca\r\nInterno: PVC\r\nSolado: ', 99, 10, 30, '2019-11-27 17:15:04'),
+(67, 'CIND12.jpg', 'Beach Slide', 'MATERIAL\r\nExterno: Brilhosa ou Fosca\r\nInterno: PVC\r\nSolado: ', 99, 10, 20, '2019-11-27 17:16:27'),
+(68, 'CIND13.jpg', 'Beach Slide', 'MATERIAL\r\nExterno: Brilhosa ou Fosca\r\nInterno: PVC\r\nSolado: ', 99, 10, 10, '2019-11-27 17:21:49'),
+(69, 'CIND14.jpg', 'Beach Slide', 'MATERIAL\r\nExterno: Brilhosa ou Fosca\r\nInterno: PVC\r\nSolado: ', 99, 10, 7, '2019-11-27 17:23:27'),
+(71, 'CIND15.jpg', 'Ulitsa Sneaker', 'MATERIAL\r\nExterno: Brilhosa ou Glitter\r\nInterno: PVC\r\nSolado', 159, 20, 11, '2019-11-27 17:26:54'),
+(72, 'CIND16.jpg', 'Ulitsa Sneaker', 'MATERIAL\r\nExterno: Brilhosa ou Glitter\r\nInterno: PVC\r\nSolado', 159, 10, 30, '2019-11-27 17:27:52'),
+(73, 'CIND17.jpg', 'Ulitsa Sneaker', 'MATERIAL\r\nExterno: Brilhosa ou Glitter\r\nInterno: PVC\r\nSolado', 159, 10, 10, '2019-11-27 17:28:45'),
+(74, 'CIND18.jpg', 'Ulitsa Sneaker', 'MATERIAL\r\nExterno: Brilhosa ou Glitter\r\nInterno: PVC\r\nSolado', 159, 10, 8, '2019-11-27 17:32:50'),
+(75, 'CIND19.jpg', 'Ulitsa Sneaker', 'MATERIAL\r\nExterno: Brilhosa ou Glitter\r\nInterno: PVC\r\nSolado', 159, 10, 10, '2019-11-27 17:34:05'),
+(76, 'CIND20.jpg', 'Ulitsa Sneaker', 'MATERIAL\r\nExterno: Brilhosa ou Glitter\r\nInterno: PVC\r\nSolado', 159, 10, 20, '2019-11-27 17:34:52'),
+(77, 'CIND21.jpg', 'Possession', 'MATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nExterno: Brilhosa ou Fo', 109, 10, 4, '2019-11-27 17:35:54'),
+(78, 'CIND22.jpg', 'Possession', 'MATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nExterno: Brilhosa ou Fo', 109, 20, 7, '2019-11-27 17:38:40'),
+(79, 'CIND23.jpg', 'Possession', 'MATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nExterno: Brilhosa ou Fo', 109, 10, 20, '2019-11-28 00:20:43'),
+(80, 'CIND24.jpg', 'Possession', 'MATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nExterno: Brilhosa ou Fo', 109, 10, 7, '2019-11-28 00:22:33'),
+(81, 'CIND25.jpg', 'Possession', 'MATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nExterno: Brilhosa ou Fo', 109, 10, 8, '2019-11-28 00:23:50'),
+(82, 'CIND27.jpg', 'Possession', 'MATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nExterno: Brilhosa ou Fo', 109, 10, 7, '2019-11-28 00:24:27'),
+(83, 'CIND28.jpg', 'Mellow', 'MATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nExterno: Brilhosa ou Fo', 179, 20, 22, '2019-11-28 00:26:00'),
+(84, 'CIND29.jpg', 'Mellow', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 179, 10, 10, '2019-11-28 00:27:13'),
+(85, 'CIND30.jpg', 'Mellow', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 179, 10, 20, '2019-11-28 00:27:53'),
+(86, 'CIND31.jpg', 'Mellow', 'MATERIAL\r\nExterno: Brilhosa\r\nInterno: PVC\r\nSolado: PVC\r\nPESO', 179, 10, 10, '2019-11-28 00:28:30'),
+(87, 'CIND32.jpg', 'Ulitsa Sneaker ', 'MATERIAL\r\nExterno: Fosca\r\nInterno: PVC\r\nSolado: PVC\r\nPESO\r\nA', 189, 10, 10, '2019-11-28 00:30:08'),
+(88, 'CIND33.jpg', 'Peace Heel', 'MATERIAL\r\nExterno: Brilhosa ou Fosca\r\nInterno: PVC\r\nSolado: ', 189, 20, 30, '2019-11-28 00:31:21'),
+(89, 'CIND37.jpg', 'Mini Melissa Bag Bear', 'Bolsa de medio porte\r\nMATERIAL\r\nExterno: Brilhosa\r\nInterno: ', 199, 35, 10, '2019-11-28 00:37:31'),
+(90, 'CIND38.jpg', 'Mini Melissa Bag Bear', 'Bolsa de medio porte\r\nMATERIAL\r\nExterno: Brilhosa\r\nInterno: ', 199, 10, 10, '2019-11-28 00:39:24'),
+(91, 'CIND39.jpg', 'Melissa Meias', 'Meia\r\nMATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nPESO\r\nAprox. 0.03', 31, 20, 8, '2019-11-28 00:41:34'),
+(92, 'CIND40.jpg', 'Melissa Meias', 'Meia\r\nMATERIAL\r\nInterno: PVC\r\nSolado: PVC\r\nPESO\r\nAprox. 0.03', 31, 20, 8, '2019-11-28 00:42:17');
 
 -- --------------------------------------------------------
 
@@ -106,34 +142,34 @@ INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`) VALUES
 (1, 'andre', 'admin@admin.com', '25d55ad283aa400af464c76d713c07ad');
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `produtos`
+-- Indexes for table `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `produtos`
+-- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
--- AUTO_INCREMENT de tabela `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
